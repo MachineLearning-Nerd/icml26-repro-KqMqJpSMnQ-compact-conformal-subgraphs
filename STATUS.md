@@ -1,7 +1,9 @@
 # Status — Compact Conformal Subgraphs
 
-Current phase: five-claim local publication gate passed; public GitHub handoff
-and canonical queueing are next.
+FULL_GATE_READY: KqMqJpSMnQ
+
+Current phase: five-claim local publication gate passed and public GitHub
+handoff complete; canonical queueing is next.
 
 The official executable implementation was not released. The pinned arXiv source
 archive (SHA-256 `9d325e820577d33c01e3d1de923157b4274ff944e85f6280389810df313f7922`)
@@ -23,12 +25,14 @@ Completed:
 - Passed the fail-closed five-claim gate in `outputs/publication_gate.json`.
   Trackio pages, source anchors, retained commands, raw JSON, and the pinned
   Conclusion summary are in place.
+- Public GitHub handoff: `MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs`
+  at commit `61f60c4103aa51e82554203904d4bbfdbf898674` (the follow-up status
+  commit will be pushed before queueing).
 
 Next:
 
-- Secret-scan, create the public GitHub handoff, then atomically enqueue the
-  gate-complete five-claim bundle through the shared backlog tool. C6 stays
-  visibly inconclusive in the public evidence.
+- Atomically enqueue the gate-complete five-claim bundle through the shared
+  backlog tool. C6 stays visibly inconclusive in the public evidence.
 
 Cost policy: local CPU only; an HF `cpu-upgrade` job is permitted only if a
 full-scale CPU sweep cannot complete locally. No T4, L4, or other GPU job.
