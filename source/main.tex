@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath, amsthm, amssymb, mathtools}
+\usepackage{fullpage}
+\usepackage{subcaption}
+\usepackage{cleveref}
+
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{corollary}{Corollary}
+\newcommand{\OPT}{OPT}
+
+\makeatletter
+\def\@fnsymbol#1{\ensuremath{\ifcase#1\or \dagger\or \ddagger\or
+   \mathsection\or \mathparagraph\or \|\or **\or \dagger\dagger
+   \or \ddagger\ddagger \else\@ctrerr\fi}}
+\makeatother
+\newcommand*\samethanks[1][\value{footnote}]{\footnotemark[#1]}
+
+\begin{document}
+
+\title{Compact Conformal Subgraphs}
+\author{Sreenivas Gollapudi\thanks{Google Research, Mountain View, CA, USA. Email:{\tt \{sgollapu,kostaskollias\}@google.com}} \and Kostas Kollias\samethanks[1] \and Kamesh Munagala\thanks{Department of Computer Science, Duke University, Durham, NC, USA. Email: {\tt kamesh@cs.duke.edu}. This work was done while the author was visiting Google Research.} \and Aravindan Vijayaraghavan\thanks{Northwestern University, Evanston, IL, USA. Email: {\tt aravindv@northwestern.edu}}}
+\date{}
+\maketitle
+
+\input{abstract}
+
+
+% Main Content
+\input{introduction}
+\input{motivation}
+\input{statement}
+
+\input{small_conformal}
+\input{conclusion}
+
+%\newpage
+% Acknowledgements should only appear in the accepted version.
+
+
+
+
+\paragraph{Use of generative AI in writing this paper.}
+We used an LLM (Gemini 3 Pro) in this work for the following tasks: (1) identifying  and summarizing prior work; (2) paraphrasing and polishing the text; and (3) the development of the synthetic and real-world navigation experiments, which included understanding the structure of the Porto dataset, and implementing the Python code. All AI-generated content, particularly citations and code logic, was verified by the authors, who take full responsibility for its correctness.
+
+%\newpage
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+%\newpage
+\appendix
+
+
+\input{conformal_proof}
+\input{hardness_compression}
+\input{mainproof}
+\input{monotone}
+%\section{Size Optimality of Conformal Prediction Set for the Fixed-Context Setting}
+\section{Sampling Hyperedges and Uniform Convergence}
+\label{sec:sampling}
+\input{uniform_convergence}
+\input{fixedcontext}
+\input{experiments}
+\input{real_experiment}
+\input{tripplanning}
+\end{document}
+
+
+

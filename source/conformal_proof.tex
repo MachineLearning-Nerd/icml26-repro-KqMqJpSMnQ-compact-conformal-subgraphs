@@ -1,0 +1,31 @@
+\section{Proof of Lemma~\ref{lem:conformal_proof}}
+\label{app:conformal_proof}
+
+We analyze the probability space defined by the randomness of the calibration splits $\mathcal{D}_1, \mathcal{D}_2$ and the test point $(A^*, B^*)$.
+
+First, condition on the realization of $\mathcal{D}_1$. Since $\mathcal{D}_1$ and $\mathcal{D}_2$ are disjoint, the threshold $d^*$ (computed solely on $\mathcal{D}_1$) is treated as a fixed constant with respect to $\mathcal{D}_2$. Consequently, the mapping from any input-output pair $(A, B)$ to its nested nonconformity score $\eta$ depends only on deterministic functions (the fixed model, the metric $f$, the fixed threshold $d^*$, and the deterministic compression algorithm).
+
+Under the standard exchangeability assumption, the scores $\{\eta_i\}_{i \in \mathcal{D}_2}$ computed on the second calibration split and the score of the test point $\eta^*$ are exchangeable random variables. By the standard property of conformal prediction quantiles~\cite{vovk2005algorithmic}, choosing $\tau^*$ as the $\lceil \phi (|\mathcal{D}_2|+1) \rceil$-th smallest score guarantees:
+\[ \mathbb{P}(\eta^* \le \tau^* \mid \mathcal{D}_1) \ge \phi. \]
+Since this holds for any realization of $\mathcal{D}_1$, we have
+\begin{equation}
+    \label{eq:score_validity}
+    \mathbb{P}(\eta^* \le \tau^*) \ge \phi.
+\end{equation}
+
+Next, we analyze the relationship between the score condition $\eta^* \le \tau^*$ and the coverage event $B^* \subseteq K_{\tau^*}(A^*)$. Recall the definition of the score $\eta^*$:
+\begin{itemize}
+    \item If $B^* \in S_{d^*}(A^*)$, then $\eta^*$ is the smallest $\tau$ such that $K_\tau$ covers $B^*$. Thus, $\eta^* \le \tau^*$ implies $B^* \subseteq K_{\tau^*}(A^*)$.
+    \item If $B^* \notin S_{d^*}(A^*)$ (Stage 1 failure), then $\eta^* = 1$. In this case, the condition $\eta^* \le \tau^*$ can only be satisfied if $\tau^* = 1$. Even if $\tau^*=1$, the subgraph $K_1$ cannot contain $B^*$. To see this, note that if the ground-truth $B^*$ was lost in Stage 1 ($B^* \notin S_{d^*}$), it means $B^*$ utilizes at least one road segment that is not in $S_{d^*}(A^*)$. Therefore, no subset of $S_{d^*}(A^*)$ (not even the maximal subset $K_1$) can fully cover $B^*$.
+\end{itemize}
+Therefore, the event $\{\eta^* \le \tau^*\}$ is equivalent to the union of two disjoint events:
+\[ \{\eta^* \le \tau^*\} \iff \{B^* \subseteq K_{\tau^*}(A^*)\} \cup \{B^* \notin S_{d^*}(A^*) \land \tau^* = 1\}. \]
+Rearranging this probability:
+\[ \mathbb{P}(B^* \subseteq K_{\tau^*}(A^*)) = \mathbb{P}(\eta^* \le \tau^*) - \mathbb{P}(B^* \notin S_{d^*}(A^*) \land \tau^* = 1). \]
+By the exchangeability of $(A^*, B^*)$ with $\mathcal{D}_1$, the threshold $d^*$ computed in the pre-filtering stage ensures:
+\[ \mathbb{P}(B^* \notin S_{d^*}(A^*)) \le \delta. \]
+This implies the joint event is also bounded:
+\[ \mathbb{P}(B^* \notin S_{d^*}(A^*) \land \tau^* = 1) \le \mathbb{P}(B^* \notin S_{d^*}(A^*)) \le \delta. \]
+Combining this with Eq.~\eqref{eq:score_validity}:
+\[ \mathbb{P}(B^* \subseteq K_{\tau^*}(A^*)) \ge \phi - \delta. \]
+This completes the proof. \qed

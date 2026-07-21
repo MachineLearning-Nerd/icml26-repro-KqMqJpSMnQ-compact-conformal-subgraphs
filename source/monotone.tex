@@ -1,0 +1,108 @@
+\section{Proof of Theorem~\ref{thm:mon}}
+\label{app:monotonicity}
+
+Recall the  LP formulation  in Section~\ref{sec:algorithm}. We wish to minimize the total vertex mass $\sum x_v$ subject to the coverage constraint $\sum w_e z_e \ge \tau \cdot W$ and the constraints $z_e \le x_v$. As discussed in Section~\ref{sec:mon}, consider the Lagrangian of the coverage constraint with a multiplier $\lambda \ge 0$. The objective becomes:
+\begin{equation}
+    \label{eq:lagrangian_lp}
+    \mathcal{L}(\lambda) = \min_{x, z \in [0,1]} \left( \sum_{v \in V} x_v - \lambda \sum_{e \in \mathcal{E}} w_e z_e \right) \quad \text{s.t.} \quad z_e \le x_v \quad \forall e \in \mathcal{E}, \forall v \in e.
+\end{equation}
+
+We first have the following, which follows from an analogous result for densest ratio subgraphs:
+
+\begin{lemma}[Integrality of the Lagrangian~\cite{charikar2000greedy}]
+\label{lem:integrality}
+For any $\lambda \ge 0$, there exists an optimal solution $(x^*, z^*)$ to $\mathcal{L}(\lambda)$
+such that $x^*_v \in \{0, 1\}$ for all $v$ and $z^*_e \in \{0, 1\}$ for all $e$.
+\end{lemma}
+\begin{proof}
+    Pick a threshold $\alpha \in[0, 1]$ uniformly at random, and set $x_v = 1$ if $x_v \ge \alpha$ (and $0$ otherwise). Because the fractional LP forces the hyperedge variable $z_e \le \min_{v \in e} x_v$, setting the vertices this way ensures the constraints are preserved, and the Lagrangian objective is preserved in expectation. This implies the existence of an integer solution matching the fractional value.
+\end{proof}
+
+
+
+
+%We can therefore interpret the optimization variables as defining a vertex set $K = \{v \in V \mid x_v = 1\}$. Due to the constraints $z_e \le x_v$, a hyperedge is induced ($z_e=1$) if and only if all its vertices are in $K$. Thus, for a fixed $\lambda$, the Lagrangian minimization problem is equivalent to finding a subgraph $K \subseteq V$ that minimizes:
+%\begin{equation}
+%    \Phi(K, \lambda) = |K| - \lambda \cdot W_{\text{induced}}(K).
+%\end{equation}
+
+
+
+%The proof below uses the connection of the Lagrangian optimum to parametric min-cuts via a flow network used for the Lagrangian for densest ratio hypergraphs in~\cite{ChekuriQT}. %A similar connection is made for densest subgraphs in~\cite{goldberg1984finding}, though their flow network is very different and only works for graphs rather than general hypergraphs.
+
+%\begin{lemma}[Nested Solutions]
+%\label{lem:nested}
+%Let $K^*(\lambda)$ denote a minimizer of $\Phi(K, \lambda)$. The optimal solutions are monotonic with respect to $\lambda$. Specifically, for any $\lambda_1 < \lambda_2$, there exist optimal solutions $K^*(\lambda_1)$ and $K^*(\lambda_2)$ such that:
+%\[ K^*(\lambda_1) \subseteq K^*(\lambda_2). \]
+%\end{lemma}
+%\begin{proof}
+%We first show that $\mathcal{L}(\lambda)$ is precisely a standard Minimum $s-t$ Cut problem on a flow network. We use the construction from~\cite{ChekuriQT}, and construct a flow network $D_\lambda$ with nodes $\{s, t\} \cup \{u_e \mid e \in \mathcal{E}\} \cup \{n_v \mid v \in V\}$ and the following edges: For each hyperedge $e$, an edge $(s, u_e)$ with capacity $C_{s, u_e} = \lambda w_e$. For each vertex $v$, an edge $(n_v, t)$ with capacity $C_{n_v, t} = 1$. For each inclusion $v \in e$, an edge $(u_e, n_v)$ with capacity $C_{u_e, n_v} = \infty$. Let $K$ denote the vertices $n_v$ on the source side of the cut. Then the cut capacity is precisely
+%$ |K| + \lambda \cdot \left(\sum_{e \in \mathcal E}  w_e - W_{\text{induced}}(K)\right),$
+%which shows $\Phi(K,\lambda)$ is minimized by the minimum cut.
+
+%In this reduction, the set of nodes on the source side is exactly the union of the selected vertices and the induced hyperedges: $X = \{n_v \mid v \in K\} \cup \{u_e \mid e \text{ induced by } K\}$. The parameter $\lambda$ appears only in the capacities of the edges incident to the source $s$, and these capacities $C_{s, u_e}(\lambda) = \lambda w_e$ are non-decreasing functions of $\lambda$.
+%This is a standard instance of the \textit{Parametric Minimum Cut} problem. A result by \cite{gallo1989fast} states that for such networks, the source-side set of the minimum cut forms a monotonic collection of sets with respect to the parameter $\lambda$.
+%Therefore, if $\lambda_1 < \lambda_2$, the optimal source sets satisfy $X(\lambda_1) \subseteq X(\lambda_2)$.
+%Projecting this back to the vertex sets
+%\[ K^*(\lambda_1) = \{v \mid n_v \in X(\lambda_1)\} \subseteq \{v \mid n_v \in X(\lambda_2)\} = K^*(\lambda_2). \]
+%completes the proof.
+%\end{proof}
+
+\subsection{Structure of the LP Solution}
+As shown in Section~\ref{sec:mon}, the Lagrangian is a parametric min-cut problem with an integer optimum, and by Lemma~\ref{lem:lag-mon}, the optimal solution $X(\lambda)$ is nested in $\lambda$. Having established that the integer solutions to the Lagrangian relaxation are nested, we now characterize the optimal fractional solution $x^*(\tau)$ to the LP in Section~\ref{sec:algorithm} for a specific target coverage $\tau$.
+
+\begin{lemma}[Structure of LP Solution]
+\label{lem:lp_structure}
+Let $\tau$ be a target coverage. There exists a critical Lagrange multiplier $\lambda^* \ge 0$ and two vertex sets $S^-$ and $S^+$ such that:
+\begin{enumerate}
+    \item $S^-$ and $S^+$ are both optimal integral solutions to the Lagrangian relaxation at $\lambda^*$.
+    \item $S^-$ is nested within $S^+$ (i.e., $S^- \subseteq S^+$).
+    \item The optimal fractional LP solution $x^*(\tau)$ is a convex combination:
+    \[ x^*(\tau) = (1-\alpha) \mathbf{1}_{S^-} + \alpha \mathbf{1}_{S^+} \]
+    where $\alpha$ is chosen such that the weight constraint $\sum_e w_e \cdot z_e \ge \tau \cdot W$ is met.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $L(\lambda) = \min_{K} (|K| - \lambda W_{\text{induced}}(K))$ be the Lagrangian dual function. By strong duality, there exists a $\lambda^*$ such that the optimal LP value is $L(\lambda^*) + \lambda^* \tau \cdot W$, where $W = \sum_{e \in \mathcal E} w_e$.
+This $\lambda^*$ corresponds to a ``breakpoint'' in the piecewise-linear concave function $L(\lambda)$, where the subgradient contains $\tau$.
+
+To define $S^-$ and $S^+$, we consider infinitesimal perturbations of $\lambda^*$: Let $S^-$ be an optimal solution for $\lambda^- = \lambda^* - \delta$ for arbitrarily small $\delta > 0$, and let $S^+$ be an optimal solution for $\lambda^+ = \lambda^* + \delta$. By Lemma~\ref{lem:lag-mon}, we have $S^- \subseteq S^+$. By the continuity of the objective function, as $\delta \to 0$, $S^-$ and $S^+$ must also be optimal for the exact parameter $\lambda^*$. Specifically:
+\[ |S^-| - \lambda^* W(S^-) = |S^+| - \lambda^* W(S^+) = L(\lambda^*). \]
+Since $\lambda^*$ is a breakpoint where the subgradient includes $\tau \cdot W$, we have $W(S^-) \le \tau \le W(S^+)$.
+The vector $\hat{x} = (1-\alpha)\mathbf{1}_{S^-} + \alpha\mathbf{1}_{S^+}$ is a convex combination of two optimal integral solutions, so it is a valid solution to the Lagrangian relaxation.
+By setting $\alpha = \frac{\tau \cdot W - W(S^-)}{W(S^+) - W(S^-)}$, the solution $\hat{x}$ satisfies the coverage constraint $\sum w_e z_e = \tau \cdot W$ with equality.
+Substituting this into the primal objective:
+\begin{align*}
+    \text{Size}(\hat{x}) &= (1-\alpha)|S^-| + \alpha|S^+|  = (1-\alpha)(L(\lambda^*) + \lambda^* W(S^-)) + \alpha(L(\lambda^*) + \lambda^* W(S^+)) \\
+    &= L(\lambda^*) + \lambda^* \left( (1-\alpha)W(S^-) + \alpha W(S^+) \right) = L(\lambda^*) + \lambda^* \tau \cdot W.
+\end{align*}
+Thus, $\hat{x}$ is the optimal primal solution.
+\end{proof}
+
+\subsection{The Rounding Procedure}
+
+Finally, we show that the LP rounding algorithm is identical to the parametric min-cut algorithm in terms of the subgraphs generated, hence showing both algorithms satisfy Theorem~\ref{thm:main-det}, and are monotone.
+
+\begin{lemma}[Structure of Threshold Rounding]
+\label{lem:rounding_monotone}
+Let $x^*(\tau)$ be the optimal fractional solution for target coverage $\tau$. Define the  vertex set $K_\tau$ by including all vertices where the fractional value exceeds a fixed threshold $\rho \in (0, 1]$ (i.e., $K_\tau = \{ v \in V \mid x^*_v(\tau) \ge \rho \}$). Then, each $K_{\tau}$ is the optimal solution to $\mathcal{L}(\lambda)$ for some $\lambda$.
+Further, the sequence of sets is nested:
+\[ \tau_1 < \tau_2 \implies K_{\tau_1} \subseteq K_{\tau_2}. \] 
+\end{lemma}
+\begin{proof}
+From the proof of Lemma~\ref{lem:lp_structure}, the optimal sets for the Lagrangian can be chosen to be nested such that $S^- \subseteq S^+$. Consider the behavior of the variable $x^*_v(\tau)$ as $\tau$ increases. The algorithm progresses through the nested chain of sets $S_0 \subset S_1 \subset \dots$. Within any interval $(W(S_i), W(S_{i+1})]$, the solution is given by $x^* = (1-\alpha)\mathbf{1}_{S_i} + \alpha\mathbf{1}_{S_{i+1}}$. The value of $x^*_v$ for a specific vertex $v$ behaves as follows:
+\begin{itemize}
+    \item If $v \in S_i$, then $v \in S_{i+1}$ as well. Thus $x^*_v = 1$.
+    \item If $v \in S_{i+1} \setminus S_i$, then $x^*_v = \alpha$. Since $\tau = (1-\alpha)W(S_i) + \alpha W(S_{i+1})$, $\alpha$ is strictly increasing with $\tau$.
+    \item If $v \notin S_{i+1}$, then $x^*_v = 0$.
+\end{itemize}
+
+Observe now that for any $\tau$, this implies the LP variables are fractional for vertices contained in some $S_2$ but not in $S_1 \subset S_2$, where $S_1$ and $S_2$ are both optimal solutions to $\mathcal{L}(\lambda^*)$ for some $\lambda^*$. Further, these fractional values are all the same. This means threshold rounding either chooses $S_1$ or $S_2$ as $K_{\tau}$, so that $K(\tau) = \mathcal L(\lambda)$ for some $\lambda$. 
+
+Finally, note that as $\tau$ moves to the next interval, the sets $S^-$ and $S^+$ change to $S_{i+1}$ and $S_{i+2}$, maintaining the non-decreasing property. Thus, for every vertex $v$, $x^*_v(\tau)$ is a non-decreasing function of $\tau$. This ensures that the LP solution is monotone. Consider any vertex $v \in K_{\tau_1}$. By definition, this implies $x^*_v(\tau_1) \ge \rho$. Since $\tau_2 > \tau_1$ and $x^*_v(\cdot)$ is non-decreasing, we have $x^*_v(\tau_2) \ge x^*_v(\tau_1) \ge \rho.$ Consequently, $v$ satisfies the threshold condition for $\tau_2$ and is included in $K_{\tau_2}$. Since this holds for any $v$, we conclude $K_{\tau_1} \subseteq K_{\tau_2}$. This completes the proof.
+\end{proof}
+
+\paragraph{Proof of Theorem~\ref{thm:mon}.} This directly follows from Lemma~\ref{lem:rounding_monotone}. \qed
+
+%\paragraph{Proof of Corollary~\ref{cor:nested}.} From Lemma~\ref{lem:rounding_monotone}, the rounding procedure outputs a solution to $\mathcal{L}(\lambda)$, which is a parametric min-cut in the bipartite flow graph constructed in the proof of Lemma~\ref{lem:nested}. The key result of~\cite{gallo1989fast} is that {\em all} the parametric min-cuts of a graph for different choices of the parameter $\lambda$ can be computed in time $\tilde{O}(nm)$, where $n$ and $m$ are number of vertices and edges in the bipartite flow graph. Mapping these quantities back to the number of vertices and hyperedges in the underlying hypergraph completes the proof of the running time. \qed

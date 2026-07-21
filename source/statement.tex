@@ -1,0 +1,38 @@
+\section{The Conformal Subgraph Problem}
+\label{sec:statement}
+Both the distribution-free (Sections~\ref{sec:free} and~\ref{sec:fixed}) and distribution-based (Section~\ref{sec:distr2}) formulations lead to the same underlying optimization problem: given a weighted family of candidate routes with total weight~$W$, find a subgraph $G'\subseteq V$ that retains at least a $\tau = 1-\epsilon$ fraction of~$W$ while minimizing the number of edges (or another cost). The only difference lies in how the distribution over routes is obtained, via filtering on distance and assigning a utility, as in the distribution-free case, or directly from the model probabilities $g(\cdot\mid A)$ in the distribution-based case. 
+
+The subgraph we output aims to approximate the smallest subgraph achieving the desired conformal guarantee in the perfectly calibrated case. We additionally require the algorithm to satisfy monotonicity (Definition~\ref{def:monotone}) to allow for valid calibration in the distribution-free setting.
+
+\paragraph{Problem Statement.} The  conformal compression framework can therefore be expressed in combinatorial terms as follows. Each distinct candidate route $B$ in the historical data corresponds to a \emph{hyperedge} whose weight encodes its score or model probability.  The vertex set $V$ represents all atomic road segments (road edges or intersections) that may appear in any route, and each hyperedge $e\subseteq V$ corresponds to the subset of segments traversed by a particular route~$B$. Let $\mathcal E$ denote the set of hyperedges. The nonnegative weight $w_e$ of hyperedge~$e$ equals its score or its model probability, and let the total weight be $W=\sum_{e\in\mathcal E}w_e$.
+
+Selecting a conformal subgraph that captures at least a fraction $\tau$ of this mass is therefore equivalent to selecting a subset of vertices $K\subseteq V$ that covers  hyper-edge weight $e(K)\ge \tau \cdot W$, where $e(S) := \sum_{\{e\in\mathcal E:\,e\subseteq S\}} w_e$. The parameter $\epsilon=1-\tau$ measures the fraction of probability mass allowed to remain uncovered, and the size of the chosen hypergraph vertex set reflects the number of edges in the compressed subgraph.
+
+This abstraction leads to the following general formulation of the \emph{conformal subgraph problem}. Let $H=(V,\mathcal E)$ be a (possibly nonuniform) hypergraph with $|V|=n$ vertices and $|\mathcal E|=m$ hyperedges. Each hyperedge $e$ has a nonnegative weight $w_e$, and $W = \sum_{e\in\mathcal E}w_e$. Assume there exists an optimal vertex set $O\subseteq V$ satisfying
+\[
+  |O| = r,
+  \qquad
+  e(O) \ge W - q,
+  \qquad
+  q = \epsilon W,
+\]
+so that $O$ covers all but an $\epsilon$ fraction of the total weight.
+
+We show in Appendix~\ref{app:np-hard} that the above problem is {\sc NP-Hard}, even in the regime where $\epsilon$ is a constant.  The goal is to approximate $O$ as closely as possible while allowing bicriteria trade-offs in coverage and size.
+
+\begin{definition}[Bicriteria approximation]
+\label{def:bicrit}
+Given parameters $(\alpha,\beta)$, a vertex set $K\subseteq V$ is an \emph{$(\alpha,\beta)$-bicriteria approximation} if $
+  W - e(K) \le \alpha\cdot \epsilon W$ and   $|K| \le \beta\,|O| = \beta \cdot r.$
+\end{definition}
+
+%In this formulation, the conformal calibration step determines the hypergraph structure and weights, and the conformal compression step corresponds to finding a vertex subset $K$ that approximately minimizes size while retaining almost all of the weighted probability mass. This leads to an approximately optimal compression had the weights corresponded to perfect calibration.
+
+\noindent\textbf{Monotonicity.} While Definition~\ref{def:bicrit} formulates the problem for a fixed target mass $\tau = 1-\epsilon$, the distribution-free conformal framework (Section~\ref{sec:model}) requires a nested sequence of subgraphs (see Definition~\ref{def:monotone}). Therefore, we need our algorithm to additionally produce a family of solutions $\{K_\tau\}$ such that $K_{\tau_1} \subseteq K_{\tau_2}$ whenever $\tau_1 < \tau_2$. As shown in the example below, such a statement need not be true for the optimal solution, and one of our contributions is to show an approximation algorithm that is monotone.
+
+\begin{example}
+\label{eg:monotone}
+Consider a setting with $3$ disjoint paths $P_1, P_2, P_3$ between $s$ and $t$. Paths $P_1$ and $P_2$ have two edges each, while path $P_3$ has three edges. Suppose $30\%$ of the traffic uses paths $P_1$, $30\%$ uses path $P_2$, and $40\%$ uses path $P_3$. If the desired coverage is $0.6$, the optimal solution chooses paths $P_1$ and $P_2$, while if it is $0.7$, the chosen paths are $P_1$ and $P_3$, so that the optimal solution is not monotone. 
+\end{example}
+
+

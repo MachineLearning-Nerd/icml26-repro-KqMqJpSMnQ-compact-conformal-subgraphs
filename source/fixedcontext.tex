@@ -1,0 +1,9 @@
+\section{Proof of Theorem~\ref{cor:efficiency}}
+\label{app:fixed}
+\begin{proof} We will use the framework of \cite{gao2025volume} to get the conformal coverage guarantee. In fact, the approach of starting with a set with a size approximation guarantee to a conformity score function using a nested family is almost identical to Section 7 of \cite{gao2025highdimensional}. So we focus on how to adapt it to our setting.   From the uniform convergence result in Lemma~\ref{lem:uniform-sample}, we can run the LP rounding algorithm on a sample of size $T/2 = \Omega(|V| /\gamma^2)$ to obtain a set $K$, that using \Cref{thm:main-det}, already satisfies Guarantee 2 (Compression) of Theorem~\ref{cor:efficiency}.   
+
+    Now, to construct a conformal predictor, it suffices to give a \emph{conformity score}. The procedure in Section~\ref{sec:fixed_optimal} constructs a  \emph{nested set system}. 
+    We can use this set system to construct a conformity score, see e.g. Equation (10) and Assumption 2.4 in \cite{gao2025volume}, which implies a conformal predictor via split conformal prediction.  They have the property that they will only output sets \(S\) from the input nested set system $S_1, \dots, S_k$. Hence split conformal prediction ensures that as long as $Y_1, \dots, Y_{T+1}$ are exchangeable we have $\mathbb{P}(Y_{T+1} \in \hat{K}) \ge \phi$.
+
+    Suppose \(Y_1, \dots, Y_{T + 1}\) are drawn i.i.d. and \(T =  \Omega(|V|/\gamma^2)\), then since \(K\) is in our nested set system, and \Cref{thm:main-det} guarantees that \(K\) achieves coverage \(\ge \phi \), the conformal predictor will not output any set in the system larger than \(K\).  This completes the proof.
+\end{proof}

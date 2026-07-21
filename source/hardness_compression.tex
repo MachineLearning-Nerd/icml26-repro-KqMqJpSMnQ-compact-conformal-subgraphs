@@ -1,0 +1,68 @@
+\section{NP-Hardness of the Conformal Subgraph Problem}
+\label{app:np-hard}
+Our main result in this section is to show that the conformal subgraph problem is {\sc NP-Hard} even in the regime where $\epsilon$ is a constant.
+
+\begin{theorem}
+Fix any constant $0<\epsilon<1$.
+The decision problem
+\[
+\text{Given a graph }G'=(V',E'),\ k\in\mathbb N,\ \text{is there }K\subseteq V'
+\text{ with }|K|\le k\text{ and }e_{G'}(K)\ge(1-\epsilon)W?
+\]
+(where $W=|E'|$) is {\sc NP-Hard}.
+\end{theorem}
+\begin{proof}
+Let $(G=(V,E),r)$ be an arbitrary CLIQUE instance with $n=|V|$, $m=|E|$, and maximum degree $d=\max_{v\in V}\deg_G(v)$. A YES instance has a clique of size $r$, while a NO instance has maximum clique size less than $r$.
+
+We construct $G'$ as follows. Form $G_c$ as the disjoint union of $c$ identical copies of $G$. The number of edges in $G_c$ is $m_c := c m$, while the per-vertex degree remains at most $d$. Add a disjoint gadget clique $C$ on $s$ new vertices. Finally, add a set $P$ of disjoint ``padding'' edges (isolated edges that do not touch $G_c$ or $C$).
+
+Let $W$ be the total number of edges in $G'$. We define the target vertex budget $k' := r + s$.
+We define the edge count of a solution that includes the gadget and an $r$-clique as:
+\[ L_{YES} := \binom{s}{2} + \binom{r}{2}. \]
+If the instance is a NO instance, any set of $r$ vertices from $G_c$ induces at most $\binom{r}{2}-1$ edges. Thus, a solution with the gadget and $r$ vertices from $G_c$ would have at most $L_{YES}-1$ edges.
+
+We choose the parameters $c$, $s$, and the padding size $|P|$ so that the following three properties hold:
+\begin{enumerate}
+  \item[(P1)] The threshold separates the YES and NO cases. We require $W$ to satisfy:
+    \begin{equation}\label{eq:P1}
+      L_{YES} - 1 \;<\; (1-\epsilon)W \;\le\; L_{YES}.
+    \end{equation}
+    This ensures that obtaining $L_{YES}$ edges is sufficient, but obtaining $L_{YES}-1$ is not.
+  \item[(P2)] Omitting even a single gadget vertex loses so many gadget
+    edges that the lost edges cannot be compensated by adding available
+    extra vertices from $G_c$ (whose individual degrees are $\le d$).
+    Concretely, it suffices to enforce
+    \begin{equation}\label{eq:P2}
+      s-1 \;>\; 2 d.
+    \end{equation}
+  \item[(P3)] The graph construction is valid. We need the required total weight $W$ to be at least the number of edges in the main components ($m_c + \binom{s}{2}$), so that the number of padding edges $|P| = W - (m_c + \binom{s}{2})$ is non-negative.
+\end{enumerate}
+
+\paragraph{Parameter Selection.}
+We assume $m$ is large. We perform the choices in the following order:
+\begin{enumerate}
+    \item For sufficiently large $c$, choose $s$ as the smallest integer such that $\epsilon \cdot \binom{s}{2} \ge (1-\epsilon) m_c$. Since the RHS grows with $c$ while $d = O(n)$, for polynomially large $c$ the condition $s > 2d +1$ from \eqref{eq:P2} is satisfied.
+    
+    \item Rearranging \eqref{eq:P1}, we need an integer $W$ in the interval  $ \left( \frac{L_{YES}-1}{1-\epsilon}, \frac{L_{YES}}{1-\epsilon} \right]. $ The length of this interval is $\frac{1}{1-\epsilon}$. Since $0 < \epsilon < 1$, the length is strictly greater than 1. Therefore, such an integer $W$ exists.
+    
+    \item Set the number of padding edges $|P| = W - (m_c + \binom{s}{2})$. We must verify that $|P| \ge 0$. 
+    From the choice of $W$, we know $W > \frac{L_{YES}-1}{1-\epsilon}$. Since $r \ge 2$, $\binom{r}{2} \ge 1$, and thus $L_{YES} - 1 = \binom{s}{2} + \binom{r}{2} - 1 \ge \binom{s}{2}$.
+    Therefore, $W \ge \frac{1}{1-\epsilon} \binom{s}{2}$.
+    From the choice of $s$, we have $\epsilon \binom{s}{2} \ge (1-\epsilon)m_c$. Adding $(1-\epsilon)\binom{s}{2}$ to both sides yields $\binom{s}{2} \ge (1-\epsilon)(m_c + \binom{s}{2})$, or equivalently $\frac{1}{1-\epsilon}\binom{s}{2} \ge m_c + \binom{s}{2}$.
+    Combining these inequalities gives $W \ge m_c + \binom{s}{2}$, ensuring $|P| \ge 0$.
+\end{enumerate}
+
+
+\paragraph{Correctness.}
+First, if $G$ contains an $r$-clique $Q$, let $K = V(C) \cup Q$. Then $|K| = s+r = k'$. The induced edges are $e(K) = \binom{s}{2} + \binom{r}{2} = L_{YES}$. By the RHS of \eqref{eq:P1}, $L_{YES} \ge (1-\epsilon)W$. Thus, this is a YES instance. Conversely, suppose there exists $K' \subseteq V(G')$ with $|K'| \le k'$ and $e_{G'}(K') \ge (1-\epsilon)W$. Note that padding edges are isolated and disjoint; selecting vertices incident to padding edges is strictly suboptimal compared to selecting vertices in $C$ (degree $s-1$) or $G_c$ (degree up to $d$), so we assume $K' \subseteq V(G_c) \cup V(C)$.
+Let $x = |K' \cap V(C)|$ and $y = |K' \cap V(G_c)|$, so $x+y \le r+s$.
+
+\begin{itemize}
+    \item \textbf{Case 1: $x=s$.} All gadget vertices are chosen. Then $y \le r$. The edges induced are $\binom{s}{2} + e_{G_c}(K' \cap V(G_c))$. Since $e_{G'}(K') \ge (1-\epsilon)W$, by the LHS of \eqref{eq:P1} we must have $e_{G'}(K') > L_{YES} - 1$.
+    Therefore, the $y$ vertices in $G_c$ must induce $> \binom{r}{2}-1$ edges. This implies they induce at least $\binom{r}{2}$ edges. Thus, $G_c$ contains an $r$-clique.
+    
+\item \textbf{Case 2: $x \le s-1$.} Let $z \ge 1$ be the number of gadget vertices omitted from the final subgraph. The number of edges lost from the gadget is $\binom{s}{2} - \binom{s-z}{2}$, which is at least $\frac{z(s-1)}{2}$. If we choose $z$ extra vertices from $G_c$ (beyond the $r$ allowed), the number of edges gained there is at most $z \cdot d$ (since every vertex in $G_c$ has degree at most $d$). By \eqref{eq:P2}, we have $s-1 > 2d$, which implies $\frac{z(s-1)}{2} > z \cdot d$. Thus, the loss from the gadget strictly exceeds the gain from $G_c$. Any such subgraph with $x + y$ vertices therefore has strictly fewer than $L_{YES} = \binom{s}{2} + \binom{r}{2}$ edges. Consequently, the weight of this subgraph is strictly below $(1-\epsilon)W$ and this case is impossible.
+\end{itemize}
+
+The reduction is poly-time as $c$ is polynomial in the input size. This proves {\sc NP-hardness} for any fixed constant $\epsilon$.
+\end{proof}

@@ -1,0 +1,91 @@
+\subsection{Uniform Convergence}
+In applications where the hyperedge family \(\mathcal E\) is too large to process directly, we replace \(\mathcal E\) by an i.i.d.\ sample \(\widehat{\mathcal E}=\{ \widehat e_1,\dots,\widehat e_{\hat{m}}\}\) from the distribution over hyperedges that places probability mass proportional to edge weight \(w_e\) on hyperedge \(e\).  All steps in the conformal compression algorithm in Section~\ref{sec:algorithm} can then be executed on the sample.  The following  statement quantifies the sample size needed so that every vertex subset's induced mass is approximated uniformly.
+
+\begin{lemma}[Uniform convergence~\cite{devroye2001combinatorial}, Chapter 4]
+\label{lem:uniform-sample}
+Let \(H=(V,\mathcal E)\) be a hypergraph with \(|V|=n\).  For every
+vertex subset \(S\subseteq V\) define the induced total population mass
+\(e(S) := \sum_{e\in\mathcal E: e\subseteq S} w_e\) and total mass
+\(W:=\sum_{e\in\mathcal E} w_e\).  Let \(\widehat{\mathcal E}\) be an
+i.i.d.\ sample of \(\hat{m}\) hyperedges drawn from the distribution that
+chooses \(e\) with probability \(w_e/W\).  Fix \(\alpha,\delta\in(0,1)\).
+There exists an absolute constant \(C\) such that if
+\[
+  \hat{m} \;\ge\; C\cdot\frac{\,\mathrm{VC}(\mathcal F) +\log(1/\delta)\,}{\alpha^2},
+\]
+where \(\mathcal F=\{f_S:\,f_S(e)=\mathbf 1\{e\subseteq S\},\ S\subseteq V\}\),
+then with probability at least \(1-\delta\) (over the draw of
+\(\widehat{\mathcal E}\)) the following holds simultaneously for every
+\(S\subseteq V\):
+\[
+  \Bigg| \frac{\sum_{\widehat e\in\widehat{\mathcal E}} \mathbf1\{\widehat e\subseteq S\}}{\hat{m}}
+         \;-\;
+         \frac{e(S)}{W} \Bigg|
+  \;\le\; \alpha.
+\]
+In particular, since \(\mathrm{VC}(\mathcal F)\le n\), it suffices to
+take \(\hat{m} = O\!\big((n+\log(1/\delta))/\alpha^2\big)\).
+\end{lemma}
+
+
+
+% \begin{lemma}[Uniform convergence~\cite{vapnik}]
+% \label{lem:uniform-sample}
+% Let \(H=(V,\mathcal E)\) be a hypergraph with \(|V|=n\).  For every
+% vertex subset \(S\subseteq V\) define the induced total population mass
+% \(e(S) := \sum_{e\in\mathcal E: e\subseteq S} w_e\) and total mass
+% \(W:=\sum_{e\in\mathcal E} w_e\).  Let \(\widehat{\mathcal E}\) be an
+% i.i.d.\ sample of \(m\) hyperedges drawn from the distribution that
+% chooses \(e\) with probability \(w_e/W\).  Fix \(\alpha,\delta\in(0,1)\).
+% There exists an absolute constant \(C\) such that if
+% \[
+%   m \;\ge\; C\cdot\frac{\,\mathrm{VC}(\mathcal F)\,\log(1/\alpha)+\log(1/\delta)\,}{\alpha^2},
+% \]
+% where \(\mathcal F=\{f_S:\,f_S(e)=\mathbf 1\{e\subseteq S\},\ S\subseteq V\}\),
+% then with probability at least \(1-\delta\) (over the draw of
+% \(\widehat{\mathcal E}\)) the following holds simultaneously for every
+% \(S\subseteq V\):
+% \[
+%   \Bigg| \frac{\sum_{\widehat e\in\widehat{\mathcal E}} \mathbf1\{\widehat e\subseteq S\}}{m}
+%          \;-\;
+%          \frac{e(S)}{W} \Bigg|
+%   \;\le\; \alpha.
+% \]
+% In particular, since \(\mathrm{VC}(\mathcal F)\le n\), it suffices to
+% take \(m = O\!\big((n\log(1/\alpha)+\log(1/\delta))/\alpha^2\big)\).
+% \end{lemma}
+%\begin{proof}
+%The family \(\mathcal F\) is the class of indicator functions \(\{e\mapsto\mathbf1\{e\subseteq S\}:S\subseteq V\}\).  Its VC dimension is at most \(n\).  Standard uniform-convergence bounds\cite{vapnik} imply that the empirical frequencies of all \(f_S\in\mathcal F\) uniformly approximate their population expectations to additive error \(\alpha\) with the claimed sample size.  The weighted sampling proportional to \(w_e\) is handled by viewing the population probability of an edge as \(w_e/W\); the empirical fraction in the sampled multiset estimates that probability.
+%\end{proof}
+
+Lemma~\ref{lem:uniform-sample} implies that for every vertex set \(S\) the \emph{empirical} induced mass measured on \(\widehat{\mathcal E}\) approximates the true induced mass \(e(S)/W\) up to additive \(\alpha\). Consequently, running the  algorithm of Section~\ref{sec:algorithm} on the sampled hyperedges produces a vertex set \(\widehat K\) whose empirical retained mass is (by that algorithm) at least the target threshold.  By uniform convergence, the \emph{true} retained mass \(e(\widehat K)/W\) is within  an additive \(\alpha\) of the empirical value, and thus the bicriteria bound proved for the algorithm on the full hyperedge set degrades only by an additive \(O(\alpha)\) factor when executed on the sample.  In particular, for any desired additive tolerance \(\alpha>0\) one can choose $\hat{m}=O((n+\log(1/\delta))/\alpha^2) $ %\(m=\operatorname{poly}(n,1/\alpha,\log(1/\delta))\) 
+so that the sample solution satisfies the same size vs.\ retained-mass bicriteria guarantee as in Theorem~\ref{thm:main-det} up to an additive \(\alpha\) loss, with probability \(\ge1-\delta\). Therefore, in the perfectly calibrated case of the weights, this preserves the approximation guarantees for compression to an additive $O(\alpha)$.
+
+In terms of calibration, sampling hyper-edges to approximate the compressor does not alter the exchangeability required for either distribution-free calibration or the ``learn--then--test'' conformal guarantee of Section~\ref{sec:model}. The sampled compressor remains a function solely of the model and input~$Q$, independent of the calibration labels~$B$, so the scores remain exchangeable, and the compressed graph remains monotone.    %By the uniform-convergence bounds in Lemma~\ref{lem:uniform-sample}, the empirical mass captured by the sampled compressor approximates the true population mass up to an additive~$\alpha$, provided the per-instance sample size is polynomial in~$n$ and~$1/\alpha$. Consequently, if we calibrate a threshold~$\tau$ on the sampled compressors, this corresponds to calibrating a threshold of $\tau - O(\alpha)$ on the population. %This ensures a marginal test coverage of at least~$\phi - O(\alpha)$, preserving the conformal validity.
+
+\subsection{Efficient Sampling Oracle for the Set $S_d(A)$}
+\label{sec:sampling_oracle}
+To apply the uniform convergence result (Lemma~\ref{lem:uniform-sample}), we require a computationally efficient oracle that can sample hyper-edges at random from the conformal set $S_{d^*}(A^*)$. In this section, we assume the sampling weights are uniform. 
+
+\subsubsection{Sampling Walks via Dynamic Programming}
+We first consider the setting of $s$--$t$ routing with uniform weights, where the underlying graph has $n$ vertices and $m$ edges.  For efficient sampling, we make two assumptions on the conformal set: First, we assume the set $S_{d^*}(A^*)$ can include walks and not just paths. Second, we assume $A^*$ is a simple path directed from $s$ to $t$, and for any $B \in S_{d^*}(A^*)$, the edges in $A^* \cap B$ are directed in $B$ in the same way as in $A^*$. 
+
+Under these assumptions, we direct the edges in $A^*$ from $s$ to $t$ in $E$, while leaving the remaining edges undirected. Any valid $B \in S_{d^*}(A^*)$ is a $s$--$t$ walk on this graph. Now treat $B$ as a multi-set of edges and consider the distance measure $f(A^*,B)$ as the number of edges in the multiset that do not belong to $A^*$.  
+
+To interpret this, assign binary weights to the edges of the graph $G=(V, E)$ (with edges in $A^*$ directed as above), so that for $(u,v) \in A^*$, $w_{uv} = 0$, while for $(u,v) \notin A^*$, $w_{uv} = 1$.  Under this weighting, the condition $f(A^*, B) \le d^*$ is equivalent to the condition that the total weight of the $s$--$t$ walk $B$ is at most $d^*$. 
+
+Let $N(u, k)$ denote the number of walks from node $u$ to the target $t$ with total accumulated weight exactly $k$. The base case is $N(t, 0) = 1$ (and $0$ for $k>0$). The recurrence relation is:
+\[ N(u, k) = \sum_{(u, v) \in E} N(v, k - w_{uv}). \]
+In the above recurrence, we assume the edges in $A^*$ are directed from $s$ to $t$ in $E$. Since edges have weights of either 0 or 1, it is now easy to check that we can compute the table iteratively in increasing order of $k$, and for each $k$, first in reverse order on the vertices in the path $A^*$, and then arbitrarily for the other vertices. This is because $N(u,k)$ for $u$ lying on $A^*$ depends on $N(v,k)$ if $(u,v) \in A^*$ and on $N(v,k-1)$ if $(u,v) \notin A^*$, while $N(u,k)$ for $u$ outside $A^*$ depends on $N(v,k-1)$ for edges $(u,v) \in E$. This procedure therefore computes exact counts in $O(d^* \cdot |E|)$ time.
+
+Once the table $N(u, k)$ is populated, sampling a walk uniformly from $S_{d^*}(A^*)$ is reduced to a stateless random walk. First, we determine the total number of valid paths $Z = \sum_{j=0}^{d^*} N(s, j)$. We sample a target budget $K \in \{0, \dots, d^*\}$ with probability $N(s, K)/Z$.  We then construct the path node-by-node starting at state $(s,K)$. Given current state $(u,k)$, we consider states $(v,k')$ that contribute to $N(u,k)$ in the above recurrence, and transition to one of them with probability proportional to $N(v,k')$. We repeat this till $u = t$. This procedure generates independent, identically distributed samples from the uniform distribution over $S_{d^*}(A^*)$, satisfying the requirements for the uniform convergence bound. 
+
+
+\subsubsection{Extension to other Settings} 
+This sampling approach generalizes to any structured output space that admits a dynamic programming decomposition. As an example, consider \emph{hierarchical classification} (also considered in~\cite{zhang2025conformalstructuredprediction}) where the label space is a tree $\mathcal{T}$ and a hyperedge corresponds to a valid subtree rooted at the origin (e.g., a pruned classification path). Given a model-output subtree $A^*$, let $S_{d^*}(A^*)$ define all subtrees rooted at the origin that have at most $d^*$ vertices not in $A^*$. As before, we assign weights to vertices such that $w_v = 1$ if $v \notin A^*$ and $0$ otherwise. We define the DP state $N(u, k)$ as the number of valid subtrees rooted at $u$ that contain exactly $k$ nodes not present in $A^*$. The recurrence relation becomes a convolution of the counts from the children of $u$: if $u$ has children $v_1, \dots, v_m$, then
+\[ N(u, k) = \sum_{j_1 + \dots + j_m = k - w_u} \prod_{i=1}^m N(v_i, j_i). \]
+Using standard DP techniques, this convolution can be computed efficiently for any $k$. Using the random walk method from Step (3) above, we can now generate an exact uniform sample of hierarchical conformal sets.
+
+As a final example, consider the \emph{Trip Planning} setting from Section~\ref{sec:experiments} where the universe of activities is partitioned into disjoint groups $G_1, \dots, G_R$ (activity types), and a valid hyperedge consists of exactly one activity from each group. Given a reference itinerary $A^*$, let $S_{d^*}(A^*)$ denote the set of itineraries that have at most $d^*$ activities not in $A^*$. We assign weight $0$ to activities in $A^*$ and $1$ to all others. We define $N(r, k)$ as the number of valid partial itineraries using groups $r$ through $R$ that accumulate exactly cost $k$. We have:
+\[ N(r, k) = \sum_{v \in G_r} N(r+1, k - w_v). \]
+Sampling reduces to picking an activity $v \in G_r$ with probability proportional to $N(r+1, K - w_v)$ and recursing, which allows efficient uniform sampling of itineraries from $S_{d^*}(A^*)$.

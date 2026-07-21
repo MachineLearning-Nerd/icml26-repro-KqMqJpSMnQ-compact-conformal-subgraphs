@@ -1,0 +1,19 @@
+{
+  "paper": "KqMqJpSMnQ",
+  "tests_passed": true,
+  "publication_gate_passed": true,
+  "substantive_claims": 5,
+  "outcomes": {
+    "verified": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+    ],
+    "inconclusive": [
+      "C6"
+    ]
+  },
+  "scope": "C3 is a finite exact sequence audit, not an empirical proof of its asymptotic soft-O runtime claim; C6 is executed at source scale but not asserted to reproduce the unseeded figure."
+}

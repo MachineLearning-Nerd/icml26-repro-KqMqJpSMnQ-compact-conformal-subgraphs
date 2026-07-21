@@ -1,0 +1,73 @@
+\section{Modeling Conformal Compression}
+\label{sec:model}
+
+We now present the  graph-based conformal compression framework, beginning with the classical distribution-free conformal calibration model.  We then describe a specialization to fixed contexts, a version with model probabilities, and finally extensions to risk controlled and conditional coverage. We show that all these yield the same underlying optimization problem that we model in Section~\ref{sec:statement}.
+
+\subsection{Distribution-free Variable-Context Setting}
+\label{sec:free}
+We adopt a split conformal approach~\cite{lei2013distribution,angelopoulos2021gentle} to guarantee marginal coverage without assumptions on the model distribution. Let $\mathcal{D}_{\text{cal}} = \{(A_t, B_t)\}_{t=1}^T$ denote the calibration data. For concreteness, we assume $(A_t,B_t)$ are paths in a road network, though this easily extends to other applications. Here $A_t$ is the model-predicted route and $B_t$ is the ground-truth route chosen by the user, given a context $Q_t$, comprising of a graph realization and a source-sink pair. Note that $Q_t$ can be different for different $t$. At test time, we observe the model output $A^*$. Given a marginal coverage guarantee $\phi \in [0,1]$, the goal is to output a set $S(A^*)$ such that $\mathbb{P}(B^* \in S(A^*)) \ge \phi$, where $B^*$ is the unknown ground truth. The probability is well-defined under an {\em exchangeability assumption} --- the samples $\{(A_t,B_t)\}_{t=1}^T$ and $(A^*,B^*)$ are realizations of exchangeable random variables, for instance, $i.i.d.$ samples from an unknown distribution.\footnote{To clarify, we are not assuming the nodes or edges of the graph are exchangeable. The assumption applies to the pairs of (model prediction, ground-truth trajectory) $(A_t, B_t)$.} 
+
+\paragraph{Stage 1: Pre-Filtering.} This step mirrors classical distribution-free conformal prediction. We partition the set $\mathcal D_{\text{cal}}$ into two disjoint subsets, $\mathcal{D}_1$ and $\mathcal{D}_2$. Using $\mathcal{D}_1$, we calibrate the distance threshold. Let $f(A, B) \ge 0$ be a nonconformity score that measures how well a candidate route~$B$ aligns with the model prediction~$A$. Examples  of distance functions include the number of edges on which $A$ and $B$ differ; the symmetric difference in total travel time or distance; or an embedding distance in some feature space. 
+
+Fix a parameter $\delta \ll \phi$. Now compute a threshold $d^*$ as follows: For each $(A_i, B_i) \in \mathcal{D}_1$, let 
+\[
+  S_{d}(A_i) = \{\,B:\ f(A_i,B)\le d\,\}.
+\]
+Now define the score
+$$ \gamma_i = \min \{ d  \ge 0: B_i \in S_d(A_i) \}.$$
+Let $d^*$ denote the $\lceil (1-\delta) (|\mathcal{D}_1|+1) \rceil$-th smallest value among these scores. For a new test pair $(A^*,B^*)$, this defines an initial set of plausible paths $S_{d^*}(A^*)$, and the exchangeability of $(A^*,B^*)$ with $\mathcal{D}_1$ implies~\cite{angelopoulos2021gentle,vovk2005algorithmic} that:
+$$ \mathbb{P}(B^* \in S_{d^*}(A^*)) \ge 1-\delta.$$
+Note now that $S_{d^*}(A^*)$ is simply a ``bag of paths'', an unstructured collection of trajectories that may be large\footnote{See Appendix~\ref{sec:sampling} for techniques to efficiently sample this set.}, and the goal now is to \emph{compress} this bag of paths into a compact subgraph while preserving a conformal guarantee.  
+
+\paragraph{Stage 2: Compression.} This step is the novelty of our work. We treat this as a second filtering step parameterized by a \emph{compression score} $\tau \in [0,1]$. Let the set $S_{d^*}(A^*)$ consist of $M$ valid paths. We assign a utility score $w_p$ to each path $p \in S_{d^*}(A^*)$. This is typically the uniform scores $w_p = 1/M$, though the procedure below is a well-defined distribution-free conformal calibration procedure for arbitrary score assignments. We seek a subgraph of the road network that minimizes the number of edges while covering a fraction $\tau$ of the total utility score. Crucially, to preserve statistical validity, we cannot simply optimize for a fixed $\tau$. Instead, we require the following property:
+
+\begin{definition}[Monotonicity]
+\label{def:monotone}
+An algorithm for subgraph construction is said to be \emph{monotone} if it generates a \textbf{nested sequence} of subgraphs $K_\tau(A^*)$ such that:
+\[ \tau_1 < \tau_2 \implies K_{\tau_1}(A^*) \subseteq K_{\tau_2}(A^*). \]
+\end{definition}
+
+This monotonicity allows us to treat $\tau$ as a calibration parameter. We use the second calibration split $\mathcal{D}_2$ to find the specific $\tau^*$ required to ensure the final subgraph satisfies the overall conformal guarantee $\phi$.
+
+\paragraph{Algorithm.}
+For each example $(A_i, B_i) \in \mathcal{D}_2$, we calculate the set $S_{d^*}(A_i)$ and run the monotone compression algorithm to obtain the sequence $\{K_\tau\}$. We compute a nested nonconformity score $\eta_i$:
+\[
+\eta_i = \begin{cases} 
+\min \{ \tau \in [0,1] : B_i \subseteq K_\tau(A_i) \} & \text{if } B_i \in S_{d^*}(A_i) \\
+1 & \text{if } B_i \notin S_{d^*}(A_i)
+\end{cases}
+\]
+Intuitively, $\eta_i$ represents the minimum subgraph mass required to cover the ground truth. If the ground truth was lost in Stage 1 (distance $> d^*$), the score is maximal (1). We then define $\tau^*$ as the $\lceil \phi (|\mathcal{D}_2|+1) \rceil$-th smallest value among these scores. The final prediction for a test input $A^*$ is the subgraph $K_{\tau^*}(A^*)$. 
+
+The lemma below shows the above procedure is a distribution-free conformal calibration procedure. %and the proof uses exchangeability in two stages~\cite{vovk2005algorithmic,angelopoulos2021gentle}.
+
+\begin{lemma}[Conformal Validity, proved in Appendix~\ref{app:conformal_proof}]
+\label{lem:conformal_proof}
+The subgraph $K_{\tau^*}(A^*)$ satisfies the marginal guarantee
+\[ \mathbb{P}(B^* \subseteq K_{\tau^*}(A^*)) \ge \phi - \delta. \]
+\end{lemma}
+
+The guarantee in Lemma~\ref{lem:conformal_proof} is strong: It serves as a distribution-free conformal wrapper around an (approximately) optimal compression of the set $S_{d^*}(A^*)$ for parameter $\tau$. It holds even when the weights $w_p$ are arbitrary and unrelated to the posterior probability $\mathbb{P}(B^* = p | A^*, B^* \in S_{d^*}(A^*))$, which in the variable context setting, may be statistically impossible to estimate (for instance, when $(A_t,B)_t)$ for different $t$ correspond to routes for different source-sink pairs on graphs with different realized edges). On the flip side, in such a general setting, it is not possible to formally connect the conformal guarantee $\phi$ to the compression parameter $\tau$ and hence the size-optimality of $|K_{\tau}|$, unless we make strong assumptions. We now present two settings where this connection is possible.
+
+\subsection{Distribution-Based Setting}
+\label{sec:distr2}
+We first consider the setting where model probabilities are available, concretely the ``learn then test'' framework~\cite{angelopoulos2022learntestcalibratingpredictive}. Modern predictive models often output full (possibly mis-specified) conditional distributions $g(B\mid Q_t)$ rather than a single $A_t$, where $Q_t$ is the context at step $t$. In this setting, calibration and compression can be performed directly on these probabilities, avoiding Stage 1.  
+
+For each context~$Q$, let $G_\tau(Q)$ be a subgraph constructed to capture a target probability mass $\tau$, i.e., $\sum_{b\in G_\tau(Q)} g(b\mid Q) \ge \tau$. The work of~\cite{angelopoulos2022learntestcalibratingpredictive} shows that a grid-search over $\tau$ can be used to achieve a desired conformal calibration guarantee. In this context, the compression problem is to efficiently compute $G_\tau(Q)$ as the smallest subgraph retaining probability mass~$\tau$. This would constitute the ideal compression had $g$ been perfectly calibrated, since then, we would have $\phi = \tau$. Note that while the generalized learn-then-test framework can handle non-monotonicity, our specific formulation above utilizes the monotonicity property (Definition~\ref{def:monotone}) to enable efficient quantile-based calibration without grid search. 
+
+\subsection{Distribution-free Fixed-Context Setting}
+\label{sec:fixed}
+We show how our graph-based conformal compression framework yields (approximate) size-optimality guarantees along with statistical validity, in a  setting that is analogous to the ``unsupervised'' framework of \cite{gao2025volume}. Here, we do not observe an external model output $A_t$ for varying contexts $Q_t$. Instead, we observe a history of path realizations $Y_1, \dots, Y_T$ drawn i.i.d.\ from a fixed, unknown distribution $\mathcal{P}$.  Such a distribution could arise if the context $Q_t$ (e.g., the 
+graph and $s$ -- $t$ pair) remains fixed over time, which captures settings like the experiments in Section~\ref{sec:nav_experiments}, where we consider a fixed graph $G$ and a single, invariant source-target pair $(s, t)$. Our results apply more broadly, generalizing to any  setting where we observe outcome samples $\{Y_t\}_{t=1}^T$ $i.i.d.$ from an unknown distribution, whether or not the underlying context is fixed.
+
+Our goal is to use this history to construct a compressed prediction set $S_{T+1}$ for the next realization $Y_{T+1}$. Rigorous guarantees on the size of the conformal prediction set are challenging to obtain in the distribution-free setting. In Section~\ref{sec:fixed_optimal}, we show how our conformal compression algorithm
+yields polynomial time algorithms that achieve an {\em approximate optimality guarantee on size} along with a conformal coverage guarantee $\phi$. 
+
+\subsection{Other Conformal Prediction Models}
+Our monotonicity property (Definition~\ref{def:monotone}) is equivalent to the nested-sets assumption required by the risk controlling prediction sets (RCPS) framework~\cite{Risk}. This provides a statistical framework to control general loss functions (e.g., controlling the expected fraction of missed route segments, or some other measure of deviation) rather than just 0-1 marginal coverage. This is desirable since the latter can be coarse, since it does not distinguish between cases where $B^*$ is disjoint from the conformal set or almost entirely overlaps with it, assigning zero score to both scenarios. The RCPS framework, via its loss function, will distinguish between these, assigning smaller loss to the second scenario. It however requires a nested sequence of sets as input. By feeding our nested conformal subgraphs $\{K_\tau\}$ into RCPS, we immediately extend our work to control arbitrary user-defined risk metrics over graphs.
+
+Finally, our work considers marginal as opposed to conditional coverage~\cite{pmlr-v25-vovk12}. For conditional coverage, as established in~\cite{pmlr-v25-vovk12,lei2013distribution}, exact finite-sample coverage is generally impossible to achieve without making strong distributional assumptions. However, our framework is orthogonal to, and compatible with conditional coverage. For instance, if one partitions the calibration data into difficulty categories to achieve approximate conditional coverage (as proposed in~\cite{pmlr-v25-vovk12}), our algorithm can simply be applied independently within each category. This would yield compressed subgraphs that satisfy category-wise conditional coverage. 
+
+
+
+

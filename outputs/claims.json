@@ -1,0 +1,121 @@
+{
+  "source": "arXiv:2602.07530",
+  "C1": {
+    "status": "verified",
+    "instances": 48,
+    "worst_normalized": {
+      "loss_ratio": 1.6,
+      "size_ratio": 1.25
+    }
+  },
+  "C2": {
+    "status": "verified",
+    "instances": 32,
+    "nested": true
+  },
+  "C3": {
+    "status": "verified_finite_sequence_only",
+    "instances": 32,
+    "max_distinct_sets": 4,
+    "vertices": 6,
+    "note": "Finite exact sequence audit; no empirical run proves the source's asymptotic soft-O bound."
+  },
+  "C4": {
+    "status": "verified",
+    "phi": 0.75,
+    "delta": 0.0,
+    "exact_coverage": 0.75,
+    "permutations": 40320,
+    "rank": 6,
+    "stage_one_audit": {
+      "phi": 0.75,
+      "delta": 0.25,
+      "exact_coverage": 0.71484375,
+      "draws": 256,
+      "bound": 0.5
+    }
+  },
+  "C5": {
+    "status": "verified",
+    "target_induced_edges": 31,
+    "yes_max": 31,
+    "no_max": 30,
+    "parameters": {
+      "c": 8,
+      "s": 8,
+      "padding": 9,
+      "W": 61
+    }
+  },
+  "C6": {
+    "status": "executed_source_scale",
+    "grid": "6x6",
+    "train_routes": 50,
+    "test_routes": 50,
+    "runs": [
+      {
+        "seed": 0,
+        "edges": 76,
+        "test_coverage": 0.9,
+        "parametric_sets": 4
+      },
+      {
+        "seed": 1,
+        "edges": 47,
+        "test_coverage": 0.6,
+        "parametric_sets": 4
+      },
+      {
+        "seed": 2,
+        "edges": 64,
+        "test_coverage": 0.82,
+        "parametric_sets": 3
+      },
+      {
+        "seed": 3,
+        "edges": 50,
+        "test_coverage": 0.64,
+        "parametric_sets": 5
+      },
+      {
+        "seed": 4,
+        "edges": 76,
+        "test_coverage": 0.78,
+        "parametric_sets": 4
+      },
+      {
+        "seed": 5,
+        "edges": 68,
+        "test_coverage": 0.9,
+        "parametric_sets": 3
+      },
+      {
+        "seed": 6,
+        "edges": 44,
+        "test_coverage": 0.6,
+        "parametric_sets": 4
+      },
+      {
+        "seed": 7,
+        "edges": 74,
+        "test_coverage": 0.82,
+        "parametric_sets": 4
+      },
+      {
+        "seed": 8,
+        "edges": 69,
+        "test_coverage": 0.74,
+        "parametric_sets": 3
+      },
+      {
+        "seed": 9,
+        "edges": 72,
+        "test_coverage": 0.94,
+        "parametric_sets": 3
+      }
+    ],
+    "mean_edges": 64.0,
+    "mean_test_coverage": 0.774,
+    "note": "Literal source-defined split, parametric-min-cut sequence, and fixed-order deletion; CPU only. The source gives no seed or code, so this does not identify which run produced its 52-edge visualization."
+  }
+}

@@ -1,0 +1,22 @@
+\section{Proof of Theorem~\ref{thm:main-det}}
+\label{app:mainproof}
+
+By definition, every vertex $v \in K$ has fractional value $x^*_v \ge \rho$. Thus,
+\begin{equation}
+\label{eq:size-bound}
+|K| = \sum_{v \in K} 1 \le \sum_{v \in K} \frac{x^*_v}{\rho} \le \frac{1}{\rho} \sum_{v \in V} x^*_v \le \frac{1}{\rho} r.
+\end{equation}
+Substituting $\rho = \frac{\kappa}{1+\kappa}$, we obtain the size bound on $|K|$.
+%\[
+%|K| \le \frac{1+\kappa}{\kappa} r = \Bigl(1 + \frac{1}{\kappa}\Bigr)r.
+%\]
+
+Next, we bound the weight of the edges \emph{not} covered (lost) by $K$. Let $W_{\text{lost}} = W - e(K)$ be the total weight of hyperedges not induced by $K$. A hyperedge $e$ is not induced in $K$ if and only if at least one of its vertices $v \in e$ is excluded from $K$ (i.e., $x^*_v < \rho$). From the LP constraints, for every edge $e$, we have $z^*_e \le \min_{v \in e} x^*_v$. Therefore, if edge $e$ is not induced in $K$, it must satisfy $z^*_e < \rho$.  Since $1-z^*_e \ge 0$, we have:
+\[
+W_{\text{lost}} = \sum_{e \not\subseteq K} w_e < \sum_{e \not\subseteq K} w_e \left( \frac{1 - z^*_e}{1 - \rho} \right) \le \frac{1}{1-\rho} \sum_{e \in \mathcal{E}} w_e (1 - z^*_e).
+\]
+The LP constraint  implies $\sum w_e (1 - z^*_e) \le \epsilon W$. Substituting this into the inequality above:
+\[
+W - e(K) = W_{\text{lost}} \le \frac{1}{1-\rho} (\epsilon W) = (1+\kappa) \epsilon W.
+\]
+This completes the proof. \qed
