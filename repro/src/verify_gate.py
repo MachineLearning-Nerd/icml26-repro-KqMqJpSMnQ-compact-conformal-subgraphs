@@ -14,6 +14,14 @@ def main():
     assert claims["C4"]["status"] == "verified"
     assert claims["C5"]["status"] == "verified"
     assert claims["C6"]["status"] == "executed_source_scale"
+    assert claims["C6_full"]["status"] in {"VERIFIED", "BLOCKED"}
+    claim_six_artifacts = Path(".openresearch/artifacts/claim_6")
+    assert json.loads(
+        (claim_six_artifacts / "independent_checker.json").read_text()
+    )["status"] == "PASS"
+    assert json.loads(
+        (claim_six_artifacts / "negative_control.json").read_text()
+    )["checker_rejected"]
     gate = {
         "paper": "KqMqJpSMnQ",
         "tests_passed": True,
@@ -23,7 +31,8 @@ def main():
             "verified": list(required),
             "inconclusive": ["C6"],
         },
-        "scope": "C3 is a finite exact sequence audit, not an empirical proof of its asymptotic soft-O runtime claim; C6 is executed at source scale but not asserted to reproduce the unseeded figure.",
+        "claim_6_full_status": claims["C6_full"]["status"],
+        "scope": "C3 remains a finite exact sequence audit. C6 now includes a full-scale, 200-seed source-faithful route and greedy comparison with an independent checker; its verdict is reported separately from the immutable baseline check.",
     }
     Path("outputs/publication_gate.json").write_text(json.dumps(gate, indent=2) + "\n")
     print(json.dumps(gate, indent=2))
