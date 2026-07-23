@@ -1,0 +1,8 @@
+{
+  "python": "3.12.11",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "logical_cpus": 8,
+  "wall_seconds": 47.854706250014715,
+  "command": "uv run --frozen python repro/src/run_claims.py --out outputs/claims.json && uv run --frozen python -m pytest repro/tests -q && uv run --frozen python repro/src/verify_gate.py",
+  "lockfile": "uv.lock"
+}

@@ -15,5 +15,13 @@
       "C6"
     ]
   },
-  "scope": "C3 is a finite exact sequence audit, not an empirical proof of its asymptotic soft-O runtime claim; C6 is executed at source scale but not asserted to reproduce the unseeded figure."
+  "claim_6_full_status": "VERIFIED",
+  "claim_2_exact_status": "FALSIFIED",
+  "full_claim_statuses": {
+    "C1_full": "VERIFIED",
+    "C3_full": "VERIFIED",
+    "C4_full": "VERIFIED",
+    "C5_full": "VERIFIED"
+  },
+  "scope": "C1, C3, C4, and C5 now have theorem-level certificates plus non-toy constructive checks. C2 has an exact literal-algorithm counterexample while the canonical parametric family remains nested. C6 includes a full-scale 200-seed route and greedy comparison."
 }

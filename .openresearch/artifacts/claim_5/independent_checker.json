@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "source_graphs": 25,
+  "yes_no_reductions": 50,
+  "largest_source_n": 60,
+  "largest_reduced_vertices": 405,
+  "independent_solvers": [
+    "networkx.find_cliques",
+    "custom bitset branch-and-bound"
+  ]
+}

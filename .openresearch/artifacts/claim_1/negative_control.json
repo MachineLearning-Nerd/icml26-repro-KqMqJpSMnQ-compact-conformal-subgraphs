@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "mutation": "set measured loss one unit above its theorem bound",
+  "checker_rejected": true
+}

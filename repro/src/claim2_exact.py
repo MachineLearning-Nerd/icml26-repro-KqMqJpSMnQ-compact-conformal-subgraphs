@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import time
 from fractions import Fraction
 from pathlib import Path
 
@@ -74,6 +75,8 @@ def _independent_scipy_solution(
 
 
 def run_claim2_exact(artifact_root: Path) -> dict:
+    started_wall = time.perf_counter()
+    started_cpu = time.process_time()
     claim_dir = artifact_root / "claim_2"
     claim_dir.mkdir(parents=True, exist_ok=True)
     kappa = Fraction(1, 5)
@@ -220,9 +223,15 @@ the claimed monotonicity and equality to the canonical parametric chain fail
 without an additional tie-breaking assumption.
 """
     )
-    return {
+    summary = {
         "status": "FALSIFIED",
         "counterexample": certificate,
         "independent_checker": independent["status"],
         "negative_control": negative["status"],
+        "runtime": {
+            "wall_seconds": time.perf_counter() - started_wall,
+            "cpu_seconds": time.process_time() - started_cpu,
+        },
     }
+    (claim_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    return summary

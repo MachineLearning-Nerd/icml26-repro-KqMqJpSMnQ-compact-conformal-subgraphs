@@ -1,0 +1,8 @@
+{
+  "status": "VERIFIED",
+  "fixed_epsilon": "1/2",
+  "source_graphs": 25,
+  "yes_no_reductions": 50,
+  "largest_source_n": 60,
+  "largest_reduced_vertices": 405
+}

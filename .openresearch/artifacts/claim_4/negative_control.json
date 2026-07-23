@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "mutation": "replace the exchangeable-rank lower bound with zero",
+  "checker_rejected": true,
+  "assumption_violation": {
+    "mutation": "nonexchangeable test scores Uniform[2,3] vs calibration Uniform[0,1]",
+    "coverage": 0.0,
+    "note": "demonstrates exchangeability is necessary; not a falsification"
+  }
+}

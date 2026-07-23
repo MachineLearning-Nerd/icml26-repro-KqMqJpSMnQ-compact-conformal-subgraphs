@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "reference": {
+    "title": "A Fast Parametric Maximum Flow Algorithm and Applications",
+    "authors": "Gallo, Grigoriadis, Tarjan",
+    "venue": "SIAM Journal on Computing 18(1):30-55 (1989)",
+    "doi": "10.1137/0218003",
+    "used_result": "the monotone source-capacity family can be solved within a constant factor of the underlying max-flow worst-case bound"
+  },
+  "mapping": [
+    "flow vertices N = n + m + 2",
+    "flow arcs A = n + m + sum_e |e| <= n + m + gamma*m",
+    "for gamma>=1, A <= 2*gamma*(m+n)",
+    "for m+n>=2, N*A <= 4*gamma*(m+n)^2",
+    "each strict nested-set change adds a vertex, so at most n+1 sets occur"
+  ],
+  "conclusion": "soft-O(N*A) maps to soft-O(gamma*(m+n)^2)"
+}

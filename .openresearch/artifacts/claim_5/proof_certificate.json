@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "source_problem": {
+    "problem": "CLIQUE",
+    "primary_reference": "Richard Karp, Reducibility among Combinatorial Problems (1972)",
+    "doi": "10.1007/978-1-4684-2001-2_9"
+  },
+  "fixed_epsilon": "1/2",
+  "implications": [
+    "P1 makes L_yes sufficient and L_yes-1 insufficient.",
+    "P2 forces every feasible target solution to retain the entire s-clique gadget.",
+    "With the gadget retained, the remaining r vertices must induce C(r,2) edges, hence form an r-clique in one copied component.",
+    "The chosen c and s are polynomial in the source graph size; padding is nonnegative by P3."
+  ],
+  "domain_restriction": "r>=3 and nonempty source graphs; CLIQUE remains NP-hard on this nontrivial restriction"
+}

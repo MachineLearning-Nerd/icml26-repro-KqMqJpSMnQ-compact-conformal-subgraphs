@@ -1,0 +1,8 @@
+{
+  "status": "VERIFIED",
+  "exact_parameter_cases": 140,
+  "largest_calibration_size": 1000000,
+  "monte_carlo_trials": 20000,
+  "observed_coverage": 0.90195,
+  "observed_stage1_coverage": 0.8137
+}

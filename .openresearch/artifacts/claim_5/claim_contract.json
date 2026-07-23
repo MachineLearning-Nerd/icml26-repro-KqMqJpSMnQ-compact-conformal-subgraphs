@@ -1,0 +1,7 @@
+{
+  "claim_id": 5,
+  "verdict": "VERIFIED",
+  "quantifiers": "the decision problem is NP-hard for every fixed constant epsilon in (0,1)",
+  "executed_constant": "epsilon=1/2",
+  "verification_rule": "answer-preserving polynomial reduction certificate from CLIQUE plus two independent exact source solvers"
+}

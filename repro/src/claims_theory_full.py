@@ -6,6 +6,7 @@ import json
 import math
 import os
 import platform
+import subprocess
 import time
 from fractions import Fraction
 from pathlib import Path
@@ -134,6 +135,7 @@ def run_claim1_full(root: Path) -> dict:
     claim_dir = root / "claim_1"
     claim_dir.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
+    started_cpu = time.process_time()
     identities = []
     for kappa in (Fraction(1, 10), Fraction(1, 4), Fraction(1), Fraction(3)):
         rho = kappa / (1 + kappa)
@@ -190,6 +192,7 @@ def run_claim1_full(root: Path) -> dict:
         "max_n": max(row["n"] for row in records),
         "max_m": max(row["m"] for row in records),
         "wall_seconds": time.perf_counter() - started,
+        "cpu_seconds": time.process_time() - started_cpu,
     }
     _write_json(claim_dir / "summary.json", summary)
     _claim_common(
@@ -257,6 +260,8 @@ def _check_flow_record(record: dict) -> None:
 
 
 def run_claim3_full(root: Path) -> dict:
+    started_wall = time.perf_counter()
+    started_cpu = time.process_time()
     claim_dir = root / "claim_3"
     claim_dir.mkdir(parents=True, exist_ok=True)
     records = []
@@ -310,6 +315,10 @@ def run_claim3_full(root: Path) -> dict:
         "cases": len(records),
         "max_n_or_m": max(max(row["n"], row["m"]) for row in records),
         "worst_exact_constant_ratio": worst_ratio,
+        "runtime": {
+            "wall_seconds": time.perf_counter() - started_wall,
+            "cpu_seconds": time.process_time() - started_cpu,
+        },
     }
     bad = dict(records[0])
     bad["incidences"] = bad["gamma"] * bad["m"] + 1
@@ -410,6 +419,8 @@ def _wilson(
 
 
 def run_claim4_full(root: Path) -> dict:
+    started_wall = time.perf_counter()
+    started_cpu = time.process_time()
     claim_dir = root / "claim_4"
     claim_dir.mkdir(parents=True, exist_ok=True)
     exact = []
@@ -508,6 +519,10 @@ def run_claim4_full(root: Path) -> dict:
         "monte_carlo_trials": trials,
         "observed_coverage": observed,
         "observed_stage1_coverage": observed_stage,
+        "runtime": {
+            "wall_seconds": time.perf_counter() - started_wall,
+            "cpu_seconds": time.process_time() - started_cpu,
+        },
     }
     _write_json(claim_dir / "summary.json", summary)
     _claim_common(
@@ -642,6 +657,8 @@ def _check_reduction_record(record: dict) -> None:
 
 
 def run_claim5_full(root: Path) -> dict:
+    started_wall = time.perf_counter()
+    started_cpu = time.process_time()
     claim_dir = root / "claim_5"
     claim_dir.mkdir(parents=True, exist_ok=True)
     records = []
@@ -722,6 +739,10 @@ def run_claim5_full(root: Path) -> dict:
         "yes_no_reductions": len(records),
         "largest_source_n": independent["largest_source_n"],
         "largest_reduced_vertices": independent["largest_reduced_vertices"],
+        "runtime": {
+            "wall_seconds": time.perf_counter() - started_wall,
+            "cpu_seconds": time.process_time() - started_cpu,
+        },
     }
     _write_json(claim_dir / "summary.json", summary)
     _claim_common(
@@ -798,6 +819,55 @@ def run_theory_claims(root: Path) -> dict:
     }
     _write_json(root / "theory_environment.json", environment)
     return results
+
+
+def write_claim_provenance(root: Path) -> None:
+    command = (
+        "uv run --frozen python repro/src/run_claims.py --out outputs/claims.json "
+        "&& uv run --frozen python -m pytest repro/tests -q "
+        "&& uv run --frozen python repro/src/verify_gate.py"
+    )
+    git_sha = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    lock_sha256 = hashlib.sha256(Path("uv.lock").read_bytes()).hexdigest()
+    seeds = {
+        1: [1101, 1102, 1103, 1104],
+        2: [],
+        3: [3303],
+        4: [4404],
+        5: [5500 + 100 * n + offset for n in (20, 30, 40, 50, 60) for offset in range(5)],
+        6: list(range(200)),
+    }
+    for claim_id in range(1, 7):
+        claim_dir = root / f"claim_{claim_id}"
+        summary_path = claim_dir / "summary.json"
+        summary = json.loads(summary_path.read_text()) if summary_path.exists() else {}
+        artifact_hashes = {
+            path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in sorted(claim_dir.iterdir())
+            if path.is_file() and path.name != "provenance.json"
+        }
+        provenance = {
+            "claim_id": claim_id,
+            "git_sha": git_sha,
+            "exact_command": command,
+            "environment": {
+                "manager": "uv",
+                "python": platform.python_version(),
+                "lockfile": "uv.lock",
+                "lockfile_sha256": lock_sha256,
+                "platform": platform.platform(),
+                "logical_cpus": os.cpu_count(),
+            },
+            "deterministic_seeds": seeds[claim_id],
+            "runtime": summary.get("runtime"),
+            "artifact_sha256": artifact_hashes,
+        }
+        _write_json(claim_dir / "provenance.json", provenance)
 
 
 def theory_self_check() -> None:

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "records_checked": 4,
+  "largest_instance": {
+    "n": 1000,
+    "m": 6000,
+    "gamma": 8,
+    "epsilon": 0.15,
+    "kappa": 0.5,
+    "rho": 0.3333333333333333,
+    "lp_objective": 849.977408844305,
+    "selected_vertices": 1000,
+    "loss": 0.0,
+    "loss_bound": 7431.974999999999,
+    "size_certificate_bound": 2549.932226532915,
+    "solver": "scipy.optimize.linprog(method='highs', sparse constraints)",
+    "seed": 1104
+  },
+  "checker": "recompute both inequalities from solver-returned objectives and selected sets"
+}

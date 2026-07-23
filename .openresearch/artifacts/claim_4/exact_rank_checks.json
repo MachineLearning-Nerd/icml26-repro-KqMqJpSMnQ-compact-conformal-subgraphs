@@ -1,0 +1,1122 @@
+[
+  {
+    "n_calibration": 1,
+    "phi": "1/2",
+    "delta": "0",
+    "rank": 1,
+    "rank_bound": "1/2",
+    "final_bound": "1/2"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "1/2",
+    "delta": "1/100",
+    "rank": 1,
+    "rank_bound": "1/2",
+    "final_bound": "49/100"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "1/2",
+    "delta": "1/10",
+    "rank": 1,
+    "rank_bound": "1/2",
+    "final_bound": "2/5"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "1/2",
+    "delta": "1/4",
+    "rank": 1,
+    "rank_bound": "1/2",
+    "final_bound": "1/4"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "3/4",
+    "delta": "0",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "1"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "3/4",
+    "delta": "1/100",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "3/4",
+    "delta": "1/10",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "3/4",
+    "delta": "1/4",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "9/10",
+    "delta": "0",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "1"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "9/10",
+    "delta": "1/100",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "9/10",
+    "delta": "1/10",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "9/10",
+    "delta": "1/4",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "19/20",
+    "delta": "0",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "1"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "19/20",
+    "delta": "1/100",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "19/20",
+    "delta": "1/10",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "19/20",
+    "delta": "1/4",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "99/100",
+    "delta": "0",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "1"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "99/100",
+    "delta": "1/100",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "99/100",
+    "delta": "1/10",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 1,
+    "phi": "99/100",
+    "delta": "1/4",
+    "rank": 2,
+    "rank_bound": "1",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "1/2",
+    "delta": "0",
+    "rank": 4,
+    "rank_bound": "1/2",
+    "final_bound": "1/2"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "1/2",
+    "delta": "1/100",
+    "rank": 4,
+    "rank_bound": "1/2",
+    "final_bound": "49/100"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "1/2",
+    "delta": "1/10",
+    "rank": 4,
+    "rank_bound": "1/2",
+    "final_bound": "2/5"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "1/2",
+    "delta": "1/4",
+    "rank": 4,
+    "rank_bound": "1/2",
+    "final_bound": "1/4"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "3/4",
+    "delta": "0",
+    "rank": 6,
+    "rank_bound": "3/4",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "3/4",
+    "delta": "1/100",
+    "rank": 6,
+    "rank_bound": "3/4",
+    "final_bound": "37/50"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "3/4",
+    "delta": "1/10",
+    "rank": 6,
+    "rank_bound": "3/4",
+    "final_bound": "13/20"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "3/4",
+    "delta": "1/4",
+    "rank": 6,
+    "rank_bound": "3/4",
+    "final_bound": "1/2"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "9/10",
+    "delta": "0",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "1"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "9/10",
+    "delta": "1/100",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "9/10",
+    "delta": "1/10",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "9/10",
+    "delta": "1/4",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "19/20",
+    "delta": "0",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "1"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "19/20",
+    "delta": "1/100",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "19/20",
+    "delta": "1/10",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "19/20",
+    "delta": "1/4",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "99/100",
+    "delta": "0",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "1"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "99/100",
+    "delta": "1/100",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "99/100",
+    "delta": "1/10",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 7,
+    "phi": "99/100",
+    "delta": "1/4",
+    "rank": 8,
+    "rank_bound": "1",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "1/2",
+    "delta": "0",
+    "rank": 25,
+    "rank_bound": "1/2",
+    "final_bound": "1/2"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "1/2",
+    "delta": "1/100",
+    "rank": 25,
+    "rank_bound": "1/2",
+    "final_bound": "49/100"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "1/2",
+    "delta": "1/10",
+    "rank": 25,
+    "rank_bound": "1/2",
+    "final_bound": "2/5"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "1/2",
+    "delta": "1/4",
+    "rank": 25,
+    "rank_bound": "1/2",
+    "final_bound": "1/4"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "3/4",
+    "delta": "0",
+    "rank": 38,
+    "rank_bound": "19/25",
+    "final_bound": "19/25"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "3/4",
+    "delta": "1/100",
+    "rank": 38,
+    "rank_bound": "19/25",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "3/4",
+    "delta": "1/10",
+    "rank": 38,
+    "rank_bound": "19/25",
+    "final_bound": "33/50"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "3/4",
+    "delta": "1/4",
+    "rank": 38,
+    "rank_bound": "19/25",
+    "final_bound": "51/100"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "9/10",
+    "delta": "0",
+    "rank": 45,
+    "rank_bound": "9/10",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "9/10",
+    "delta": "1/100",
+    "rank": 45,
+    "rank_bound": "9/10",
+    "final_bound": "89/100"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "9/10",
+    "delta": "1/10",
+    "rank": 45,
+    "rank_bound": "9/10",
+    "final_bound": "4/5"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "9/10",
+    "delta": "1/4",
+    "rank": 45,
+    "rank_bound": "9/10",
+    "final_bound": "13/20"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "19/20",
+    "delta": "0",
+    "rank": 48,
+    "rank_bound": "24/25",
+    "final_bound": "24/25"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "19/20",
+    "delta": "1/100",
+    "rank": 48,
+    "rank_bound": "24/25",
+    "final_bound": "19/20"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "19/20",
+    "delta": "1/10",
+    "rank": 48,
+    "rank_bound": "24/25",
+    "final_bound": "43/50"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "19/20",
+    "delta": "1/4",
+    "rank": 48,
+    "rank_bound": "24/25",
+    "final_bound": "71/100"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "99/100",
+    "delta": "0",
+    "rank": 50,
+    "rank_bound": "1",
+    "final_bound": "1"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "99/100",
+    "delta": "1/100",
+    "rank": 50,
+    "rank_bound": "1",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "99/100",
+    "delta": "1/10",
+    "rank": 50,
+    "rank_bound": "1",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 49,
+    "phi": "99/100",
+    "delta": "1/4",
+    "rank": 50,
+    "rank_bound": "1",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "1/2",
+    "delta": "0",
+    "rank": 100,
+    "rank_bound": "1/2",
+    "final_bound": "1/2"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "1/2",
+    "delta": "1/100",
+    "rank": 100,
+    "rank_bound": "1/2",
+    "final_bound": "49/100"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "1/2",
+    "delta": "1/10",
+    "rank": 100,
+    "rank_bound": "1/2",
+    "final_bound": "2/5"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "1/2",
+    "delta": "1/4",
+    "rank": 100,
+    "rank_bound": "1/2",
+    "final_bound": "1/4"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "3/4",
+    "delta": "0",
+    "rank": 150,
+    "rank_bound": "3/4",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "3/4",
+    "delta": "1/100",
+    "rank": 150,
+    "rank_bound": "3/4",
+    "final_bound": "37/50"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "3/4",
+    "delta": "1/10",
+    "rank": 150,
+    "rank_bound": "3/4",
+    "final_bound": "13/20"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "3/4",
+    "delta": "1/4",
+    "rank": 150,
+    "rank_bound": "3/4",
+    "final_bound": "1/2"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "9/10",
+    "delta": "0",
+    "rank": 180,
+    "rank_bound": "9/10",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "9/10",
+    "delta": "1/100",
+    "rank": 180,
+    "rank_bound": "9/10",
+    "final_bound": "89/100"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "9/10",
+    "delta": "1/10",
+    "rank": 180,
+    "rank_bound": "9/10",
+    "final_bound": "4/5"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "9/10",
+    "delta": "1/4",
+    "rank": 180,
+    "rank_bound": "9/10",
+    "final_bound": "13/20"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "19/20",
+    "delta": "0",
+    "rank": 190,
+    "rank_bound": "19/20",
+    "final_bound": "19/20"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "19/20",
+    "delta": "1/100",
+    "rank": 190,
+    "rank_bound": "19/20",
+    "final_bound": "47/50"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "19/20",
+    "delta": "1/10",
+    "rank": 190,
+    "rank_bound": "19/20",
+    "final_bound": "17/20"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "19/20",
+    "delta": "1/4",
+    "rank": 190,
+    "rank_bound": "19/20",
+    "final_bound": "7/10"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "99/100",
+    "delta": "0",
+    "rank": 198,
+    "rank_bound": "99/100",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "99/100",
+    "delta": "1/100",
+    "rank": 198,
+    "rank_bound": "99/100",
+    "final_bound": "49/50"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "99/100",
+    "delta": "1/10",
+    "rank": 198,
+    "rank_bound": "99/100",
+    "final_bound": "89/100"
+  },
+  {
+    "n_calibration": 199,
+    "phi": "99/100",
+    "delta": "1/4",
+    "rank": 198,
+    "rank_bound": "99/100",
+    "final_bound": "37/50"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "1/2",
+    "delta": "0",
+    "rank": 500,
+    "rank_bound": "1/2",
+    "final_bound": "1/2"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "1/2",
+    "delta": "1/100",
+    "rank": 500,
+    "rank_bound": "1/2",
+    "final_bound": "49/100"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "1/2",
+    "delta": "1/10",
+    "rank": 500,
+    "rank_bound": "1/2",
+    "final_bound": "2/5"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "1/2",
+    "delta": "1/4",
+    "rank": 500,
+    "rank_bound": "1/2",
+    "final_bound": "1/4"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "3/4",
+    "delta": "0",
+    "rank": 750,
+    "rank_bound": "3/4",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "3/4",
+    "delta": "1/100",
+    "rank": 750,
+    "rank_bound": "3/4",
+    "final_bound": "37/50"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "3/4",
+    "delta": "1/10",
+    "rank": 750,
+    "rank_bound": "3/4",
+    "final_bound": "13/20"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "3/4",
+    "delta": "1/4",
+    "rank": 750,
+    "rank_bound": "3/4",
+    "final_bound": "1/2"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "9/10",
+    "delta": "0",
+    "rank": 900,
+    "rank_bound": "9/10",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "9/10",
+    "delta": "1/100",
+    "rank": 900,
+    "rank_bound": "9/10",
+    "final_bound": "89/100"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "9/10",
+    "delta": "1/10",
+    "rank": 900,
+    "rank_bound": "9/10",
+    "final_bound": "4/5"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "9/10",
+    "delta": "1/4",
+    "rank": 900,
+    "rank_bound": "9/10",
+    "final_bound": "13/20"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "19/20",
+    "delta": "0",
+    "rank": 950,
+    "rank_bound": "19/20",
+    "final_bound": "19/20"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "19/20",
+    "delta": "1/100",
+    "rank": 950,
+    "rank_bound": "19/20",
+    "final_bound": "47/50"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "19/20",
+    "delta": "1/10",
+    "rank": 950,
+    "rank_bound": "19/20",
+    "final_bound": "17/20"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "19/20",
+    "delta": "1/4",
+    "rank": 950,
+    "rank_bound": "19/20",
+    "final_bound": "7/10"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "99/100",
+    "delta": "0",
+    "rank": 990,
+    "rank_bound": "99/100",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "99/100",
+    "delta": "1/100",
+    "rank": 990,
+    "rank_bound": "99/100",
+    "final_bound": "49/50"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "99/100",
+    "delta": "1/10",
+    "rank": 990,
+    "rank_bound": "99/100",
+    "final_bound": "89/100"
+  },
+  {
+    "n_calibration": 999,
+    "phi": "99/100",
+    "delta": "1/4",
+    "rank": 990,
+    "rank_bound": "99/100",
+    "final_bound": "37/50"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "1/2",
+    "delta": "0",
+    "rank": 5000,
+    "rank_bound": "1/2",
+    "final_bound": "1/2"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "1/2",
+    "delta": "1/100",
+    "rank": 5000,
+    "rank_bound": "1/2",
+    "final_bound": "49/100"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "1/2",
+    "delta": "1/10",
+    "rank": 5000,
+    "rank_bound": "1/2",
+    "final_bound": "2/5"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "1/2",
+    "delta": "1/4",
+    "rank": 5000,
+    "rank_bound": "1/2",
+    "final_bound": "1/4"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "3/4",
+    "delta": "0",
+    "rank": 7500,
+    "rank_bound": "3/4",
+    "final_bound": "3/4"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "3/4",
+    "delta": "1/100",
+    "rank": 7500,
+    "rank_bound": "3/4",
+    "final_bound": "37/50"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "3/4",
+    "delta": "1/10",
+    "rank": 7500,
+    "rank_bound": "3/4",
+    "final_bound": "13/20"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "3/4",
+    "delta": "1/4",
+    "rank": 7500,
+    "rank_bound": "3/4",
+    "final_bound": "1/2"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "9/10",
+    "delta": "0",
+    "rank": 9000,
+    "rank_bound": "9/10",
+    "final_bound": "9/10"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "9/10",
+    "delta": "1/100",
+    "rank": 9000,
+    "rank_bound": "9/10",
+    "final_bound": "89/100"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "9/10",
+    "delta": "1/10",
+    "rank": 9000,
+    "rank_bound": "9/10",
+    "final_bound": "4/5"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "9/10",
+    "delta": "1/4",
+    "rank": 9000,
+    "rank_bound": "9/10",
+    "final_bound": "13/20"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "19/20",
+    "delta": "0",
+    "rank": 9500,
+    "rank_bound": "19/20",
+    "final_bound": "19/20"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "19/20",
+    "delta": "1/100",
+    "rank": 9500,
+    "rank_bound": "19/20",
+    "final_bound": "47/50"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "19/20",
+    "delta": "1/10",
+    "rank": 9500,
+    "rank_bound": "19/20",
+    "final_bound": "17/20"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "19/20",
+    "delta": "1/4",
+    "rank": 9500,
+    "rank_bound": "19/20",
+    "final_bound": "7/10"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "99/100",
+    "delta": "0",
+    "rank": 9900,
+    "rank_bound": "99/100",
+    "final_bound": "99/100"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "99/100",
+    "delta": "1/100",
+    "rank": 9900,
+    "rank_bound": "99/100",
+    "final_bound": "49/50"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "99/100",
+    "delta": "1/10",
+    "rank": 9900,
+    "rank_bound": "99/100",
+    "final_bound": "89/100"
+  },
+  {
+    "n_calibration": 9999,
+    "phi": "99/100",
+    "delta": "1/4",
+    "rank": 9900,
+    "rank_bound": "99/100",
+    "final_bound": "37/50"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "1/2",
+    "delta": "0",
+    "rank": 500001,
+    "rank_bound": "500001/1000001",
+    "final_bound": "500001/1000001"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "1/2",
+    "delta": "1/100",
+    "rank": 500001,
+    "rank_bound": "500001/1000001",
+    "final_bound": "49000099/100000100"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "1/2",
+    "delta": "1/10",
+    "rank": 500001,
+    "rank_bound": "500001/1000001",
+    "final_bound": "4000009/10000010"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "1/2",
+    "delta": "1/4",
+    "rank": 500001,
+    "rank_bound": "500001/1000001",
+    "final_bound": "1000003/4000004"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "3/4",
+    "delta": "0",
+    "rank": 750001,
+    "rank_bound": "750001/1000001",
+    "final_bound": "750001/1000001"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "3/4",
+    "delta": "1/100",
+    "rank": 750001,
+    "rank_bound": "750001/1000001",
+    "final_bound": "74000099/100000100"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "3/4",
+    "delta": "1/10",
+    "rank": 750001,
+    "rank_bound": "750001/1000001",
+    "final_bound": "6500009/10000010"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "3/4",
+    "delta": "1/4",
+    "rank": 750001,
+    "rank_bound": "750001/1000001",
+    "final_bound": "2000003/4000004"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "9/10",
+    "delta": "0",
+    "rank": 900001,
+    "rank_bound": "900001/1000001",
+    "final_bound": "900001/1000001"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "9/10",
+    "delta": "1/100",
+    "rank": 900001,
+    "rank_bound": "900001/1000001",
+    "final_bound": "89000099/100000100"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "9/10",
+    "delta": "1/10",
+    "rank": 900001,
+    "rank_bound": "900001/1000001",
+    "final_bound": "8000009/10000010"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "9/10",
+    "delta": "1/4",
+    "rank": 900001,
+    "rank_bound": "900001/1000001",
+    "final_bound": "2600003/4000004"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "19/20",
+    "delta": "0",
+    "rank": 950001,
+    "rank_bound": "950001/1000001",
+    "final_bound": "950001/1000001"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "19/20",
+    "delta": "1/100",
+    "rank": 950001,
+    "rank_bound": "950001/1000001",
+    "final_bound": "94000099/100000100"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "19/20",
+    "delta": "1/10",
+    "rank": 950001,
+    "rank_bound": "950001/1000001",
+    "final_bound": "8500009/10000010"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "19/20",
+    "delta": "1/4",
+    "rank": 950001,
+    "rank_bound": "950001/1000001",
+    "final_bound": "2800003/4000004"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "99/100",
+    "delta": "0",
+    "rank": 990001,
+    "rank_bound": "990001/1000001",
+    "final_bound": "990001/1000001"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "99/100",
+    "delta": "1/100",
+    "rank": 990001,
+    "rank_bound": "990001/1000001",
+    "final_bound": "98000099/100000100"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "99/100",
+    "delta": "1/10",
+    "rank": 990001,
+    "rank_bound": "990001/1000001",
+    "final_bound": "8900009/10000010"
+  },
+  {
+    "n_calibration": 1000000,
+    "phi": "99/100",
+    "delta": "1/4",
+    "rank": 990001,
+    "rank_bound": "990001/1000001",
+    "final_bound": "2960003/4000004"
+  }
+]

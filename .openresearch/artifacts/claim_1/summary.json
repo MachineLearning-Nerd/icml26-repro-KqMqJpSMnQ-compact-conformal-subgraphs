@@ -1,0 +1,8 @@
+{
+  "status": "VERIFIED",
+  "universal_algebra_certificate": "PASS",
+  "scale_instances": 4,
+  "max_n": 1000,
+  "max_m": 6000,
+  "wall_seconds": 46.55248675000621
+}
