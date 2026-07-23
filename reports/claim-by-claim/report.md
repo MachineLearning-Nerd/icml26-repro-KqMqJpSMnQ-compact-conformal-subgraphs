@@ -2,6 +2,11 @@
 
 ![Observed and paper compression curves](images/headline-claim6-curves.png)
 
+Published evidence revision:
+[`DineshAI/KqMqJpSMnQ@5e743ef78df75e81ddcce5785ee39e16f59a9cad`](https://huggingface.co/spaces/DineshAI/KqMqJpSMnQ/commit/5e743ef78df75e81ddcce5785ee39e16f59a9cad).
+Status: **awaiting live judge evaluation**. The current live judged score is
+still **5/12**.
+
 The paper asks whether a calibrated prediction set can be compressed into a
 small subgraph while preserving distribution-free route coverage. We rebuilt
 the algorithms without author code, audited every theorem at its exact
@@ -133,4 +138,5 @@ The strongest new result is the completed Claim 6 comparison: an exact
 tested. Claims 1, 3, 4, and 5 now rest on theorem-level certificates rather
 than small-instance extrapolation. Claim 2 is honestly falsified only under the
 literal unspecified LP tie behavior; the canonical parametric theorem is not
-contradicted. A live judge has not evaluated this release candidate.
+contradicted. The release is published and awaiting a live judge; no score
+increase is claimed before that evaluation.
