@@ -2,26 +2,35 @@
   "paper": "KqMqJpSMnQ",
   "tests_passed": true,
   "publication_gate_passed": true,
-  "substantive_claims": 5,
+  "substantive_claims": 6,
   "outcomes": {
-    "verified": [
+    "VERIFIED": [
       "C1",
-      "C2",
       "C3",
       "C4",
-      "C5"
-    ],
-    "inconclusive": [
+      "C5",
       "C6"
-    ]
+    ],
+    "FALSIFIED": [
+      "C2"
+    ],
+    "BLOCKED": []
   },
-  "claim_6_full_status": "VERIFIED",
-  "claim_2_exact_status": "FALSIFIED",
-  "full_claim_statuses": {
-    "C1_full": "VERIFIED",
-    "C3_full": "VERIFIED",
-    "C4_full": "VERIFIED",
-    "C5_full": "VERIFIED"
+  "claim_results": {
+    "C1": "VERIFIED",
+    "C2": "FALSIFIED",
+    "C3": "VERIFIED",
+    "C4": "VERIFIED",
+    "C5": "VERIFIED",
+    "C6": "VERIFIED"
+  },
+  "legacy_regression_routes": {
+    "C1": "verified",
+    "C2": "verified",
+    "C3": "verified_finite_sequence_only",
+    "C4": "verified",
+    "C5": "verified",
+    "C6": "executed_source_scale"
   },
   "scope": "C1, C3, C4, and C5 now have theorem-level certificates plus non-toy constructive checks. C2 has an exact literal-algorithm counterexample while the canonical parametric family remains nested. C6 includes a full-scale 200-seed route and greedy comparison."
 }

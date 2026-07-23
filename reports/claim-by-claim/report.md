@@ -124,6 +124,7 @@ limitations live under `.openresearch/artifacts/claim_*/`.
 - [Universal certificates and scale audits](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/universal-certificates-and-scale-audits)
 - [Release candidate](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/release-candidate-evidence-package)
 - [Final evidence snapshot](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/final-evidence-snapshot)
+- [Consistent final release gate](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/consistent-final-release-gate)
 
 ## Assessment
 

@@ -1,4 +1,4 @@
-"""Fail closed unless the five audited claim outcomes and tests are present."""
+"""Fail closed unless all six authoritative claim outcomes and tests are present."""
 from __future__ import annotations
 
 import json
@@ -7,7 +7,6 @@ from pathlib import Path
 
 def main():
     claims = json.loads(Path("outputs/claims.json").read_text())
-    required = ("C1", "C2", "C3", "C4", "C5")
     assert claims["C1"]["status"] == "verified"
     assert claims["C2"]["status"] == "verified"
     assert claims["C2_exact"]["status"] == "FALSIFIED"
@@ -17,7 +16,7 @@ def main():
     assert claims["C6"]["status"] == "executed_source_scale"
     for claim_id in ("C1_full", "C3_full", "C4_full", "C5_full"):
         assert claims[claim_id]["status"] == "VERIFIED"
-    assert claims["C6_full"]["status"] in {"VERIFIED", "BLOCKED"}
+    assert claims["C6_full"]["status"] == "VERIFIED"
     claim_six_artifacts = Path(".openresearch/artifacts/claim_6")
     assert json.loads(
         (claim_six_artifacts / "independent_checker.json").read_text()
@@ -44,16 +43,23 @@ def main():
         "paper": "KqMqJpSMnQ",
         "tests_passed": True,
         "publication_gate_passed": True,
-        "substantive_claims": len(required),
+        "substantive_claims": 6,
         "outcomes": {
-            "verified": list(required),
-            "inconclusive": ["C6"],
+            "VERIFIED": ["C1", "C3", "C4", "C5", "C6"],
+            "FALSIFIED": ["C2"],
+            "BLOCKED": [],
         },
-        "claim_6_full_status": claims["C6_full"]["status"],
-        "claim_2_exact_status": claims["C2_exact"]["status"],
-        "full_claim_statuses": {
+        "claim_results": {
+            "C1": claims["C1_full"]["status"],
+            "C2": claims["C2_exact"]["status"],
+            "C3": claims["C3_full"]["status"],
+            "C4": claims["C4_full"]["status"],
+            "C5": claims["C5_full"]["status"],
+            "C6": claims["C6_full"]["status"],
+        },
+        "legacy_regression_routes": {
             claim_id: claims[claim_id]["status"]
-            for claim_id in ("C1_full", "C3_full", "C4_full", "C5_full")
+            for claim_id in ("C1", "C2", "C3", "C4", "C5", "C6")
         },
         "scope": "C1, C3, C4, and C5 now have theorem-level certificates plus non-toy constructive checks. C2 has an exact literal-algorithm counterexample while the canonical parametric family remains nested. C6 includes a full-scale 200-seed route and greedy comparison.",
     }
