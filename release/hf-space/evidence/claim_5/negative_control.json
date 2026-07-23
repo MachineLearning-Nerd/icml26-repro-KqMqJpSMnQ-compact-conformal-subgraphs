@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "mutation": "flip the answer of one reduced instance",
+  "checker_rejected": true
+}

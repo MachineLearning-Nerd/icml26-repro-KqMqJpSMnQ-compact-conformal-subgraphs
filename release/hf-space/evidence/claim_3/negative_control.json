@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "mutation": "claim one more incidence than maximum hyperedge size gamma permits",
+  "checker_rejected": true
+}

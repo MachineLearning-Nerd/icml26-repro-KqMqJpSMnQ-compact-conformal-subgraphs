@@ -1,0 +1,18 @@
+{
+  "seed": 4404,
+  "trials": 20000,
+  "n_calibration": 999,
+  "phi": 0.9,
+  "delta": 0.1,
+  "continuous_score_coverage": 0.90195,
+  "continuous_score_wilson95": [
+    0.8977510521732555,
+    0.9059945700412422
+  ],
+  "stage1_filtered_coverage": 0.8137,
+  "stage1_filtered_wilson95": [
+    0.8082439433913453,
+    0.8190355731870547
+  ],
+  "target_bound": 0.8
+}

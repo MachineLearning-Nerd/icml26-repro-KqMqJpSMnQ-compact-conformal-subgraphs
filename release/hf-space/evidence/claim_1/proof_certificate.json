@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "steps": [
+    "LP feasibility of an optimal integer solution gives sum(x*) <= r.",
+    "If an edge is not induced after threshold rho, some incident x_v < rho, hence z_e < rho.",
+    "Therefore lost mass <= sum_e w_e(1-z_e)/(1-rho) <= epsilon*W/(1-rho).",
+    "Every selected vertex contributes at least rho, so |K|*rho <= sum(x*) <= r."
+  ],
+  "coefficient_identities": [
+    {
+      "kappa": "1/10",
+      "rho": "1/11",
+      "loss_multiplier": "11/10",
+      "size_multiplier": "11"
+    },
+    {
+      "kappa": "1/4",
+      "rho": "1/5",
+      "loss_multiplier": "5/4",
+      "size_multiplier": "5"
+    },
+    {
+      "kappa": "1",
+      "rho": "1/2",
+      "loss_multiplier": "2",
+      "size_multiplier": "2"
+    },
+    {
+      "kappa": "3",
+      "rho": "3/4",
+      "loss_multiplier": "4",
+      "size_multiplier": "4/3"
+    }
+  ]
+}

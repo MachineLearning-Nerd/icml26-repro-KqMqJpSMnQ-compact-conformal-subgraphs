@@ -1,0 +1,32 @@
+{
+  "claim_id": 4,
+  "git_sha": "418e61afa77c26fe891fd2f9a9f46dcde883b665",
+  "exact_command": "uv run --frozen python repro/src/run_claims.py --out outputs/claims.json && uv run --frozen python -m pytest repro/tests -q && uv run --frozen python repro/src/verify_gate.py",
+  "environment": {
+    "manager": "uv",
+    "python": "3.12.11",
+    "lockfile": "uv.lock",
+    "lockfile_sha256": "075e725a83173524b24bd7c3dcbf5695905ec9492f1eaaa875d1d77804ec52f4",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "logical_cpus": 8
+  },
+  "deterministic_seeds": [
+    4404
+  ],
+  "runtime": {
+    "wall_seconds": 0.749900541966781,
+    "cpu_seconds": 0.40167100000000033
+  },
+  "artifact_sha256": {
+    "EVAL.md": "87c75120ce1b00afad20443bb4f309820c34e8742a77299e773d6705dc1c2298",
+    "claim_contract.json": "ddc188ff6a78c15ebbf9447c07352159f70906503bf4c9c596193e4e541b4058",
+    "exact_rank_checks.json": "e4034dd661a7bec50006150425ca0ddd5921f608f1deefeae6d441430806c7f0",
+    "independent_checker.json": "9fcb8dea1e353ca9d7d1353ccd5d45b42a5f0224577216e7ed522271b2cc4a63",
+    "limitations.md": "0e1e5cfa9fce22dbb4df5e4d89cc0e7b863785f7ce3a9daab2502288bf974f2d",
+    "method.md": "8d08bdf2b24a91a3d951f9d55582ff11594fc8a7fe46264a7a548cbf7512671a",
+    "negative_control.json": "5178ff2b8ec6c139426a8e8b3ae7f91069997da327080d55df735180915266f5",
+    "raw_monte_carlo.json": "853453894ee98a0f174f0008ad6b62e2670a897e8f1d613f5ba43d8ff742e4e3",
+    "source_audit.md": "d45dafd97dc3de79521ae2ab3d828bf5218c39d75a8001da20d124041a6a9e6d",
+    "summary.json": "9b56994249c02ed086f2526ab393a0d2ca926fed6fab61407be540901a1f94ea"
+  }
+}

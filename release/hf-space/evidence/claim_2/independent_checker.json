@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "solver": "scipy.optimize.linprog(method='highs')",
+  "low_x": [
+    0.4,
+    -0.0
+  ],
+  "high_x": [
+    -0.0,
+    1.0
+  ],
+  "low_rounded": [
+    0
+  ],
+  "high_rounded": [
+    1
+  ],
+  "nested": false
+}

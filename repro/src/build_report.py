@@ -272,6 +272,7 @@ limitations live under `.openresearch/artifacts/claim_*/`.
 - [Exact LP tie audit](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/exact-lp-tie-breaking-theorem-audit)
 - [Universal certificates and scale audits](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/universal-certificates-and-scale-audits)
 - [Release candidate](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/release-candidate-evidence-package)
+- [Final evidence snapshot](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/final-evidence-snapshot)
 
 ## Assessment
 

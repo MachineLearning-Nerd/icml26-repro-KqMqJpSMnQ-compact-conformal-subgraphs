@@ -1,0 +1,10 @@
+{
+  "claim_id": 1,
+  "verdict": "VERIFIED",
+  "quantifiers": "every weighted hypergraph, epsilon in [0,1], kappa>0, and optimal LP solution",
+  "conclusions": [
+    "W-e(K) <= (1+kappa) epsilon W",
+    "|K| <= (1+1/kappa) r"
+  ],
+  "verification_rule": "exact coefficient identities and premise-preserving inequality derivation pass"
+}

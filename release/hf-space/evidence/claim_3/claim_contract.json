@@ -1,0 +1,7 @@
+{
+  "claim_id": 3,
+  "verdict": "VERIFIED",
+  "quantifiers": "all hypergraphs with n vertices, m hyperedges, maximum hyperedge size gamma",
+  "conclusion": "the entire canonical parametric min-cut sequence is computable in soft-O(gamma*(m+n)^2)",
+  "verification_rule": "primary parametric-flow theorem plus exact size-preserving reduction certificate"
+}

@@ -96,7 +96,11 @@
       "lp_equals_parametric_at_low_tau": false
     },
     "independent_checker": "PASS",
-    "negative_control": "PASS"
+    "negative_control": "PASS",
+    "runtime": {
+      "wall_seconds": 0.009223041997756809,
+      "cpu_seconds": 0.006757999999999598
+    }
   },
   "C4": {
     "status": "verified",
@@ -202,7 +206,8 @@
     "scale_instances": 4,
     "max_n": 1000,
     "max_m": 6000,
-    "wall_seconds": 46.55248675000621
+    "wall_seconds": 13.015558457991574,
+    "cpu_seconds": 8.562639999999998
   },
   "C3_full": {
     "status": "VERIFIED",
@@ -216,7 +221,11 @@
     "largest_calibration_size": 1000000,
     "monte_carlo_trials": 20000,
     "observed_coverage": 0.90195,
-    "observed_stage1_coverage": 0.8137
+    "observed_stage1_coverage": 0.8137,
+    "runtime": {
+      "wall_seconds": 0.749900541966781,
+      "cpu_seconds": 0.40167100000000033
+    }
   },
   "C5_full": {
     "status": "VERIFIED",
@@ -224,7 +233,11 @@
     "source_graphs": 25,
     "yes_no_reductions": 50,
     "largest_source_n": 60,
-    "largest_reduced_vertices": 405
+    "largest_reduced_vertices": 405,
+    "runtime": {
+      "wall_seconds": 0.043761709006503224,
+      "cpu_seconds": 0.03985899999999987
+    }
   },
   "C6_full": {
     "status": "VERIFIED",
@@ -825,8 +838,8 @@
       "reverse": 0.7639753486424354
     },
     "runtime": {
-      "wall_seconds": 151.38246262498433,
-      "cpu_seconds": 38.951031,
+      "wall_seconds": 49.94221695797751,
+      "cpu_seconds": 31.312136,
       "logical_cpus": 8,
       "platform": "macOS-26.5.2-arm64-arm-64bit",
       "python": "3.12.11"

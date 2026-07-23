@@ -112,7 +112,7 @@ All runs used local Apple CPU only, Python 3.12.11, uv 0.11.29, and one locked
 repository `.venv`; no GPU and no Hugging Face compute were used. The cumulative
 science run finished in roughly 4.5 minutes including clone/environment setup.
 Claim 1's LP audit took 46.6 seconds, and the final Claim 6 kernel recorded
-39.0 CPU seconds. Raw JSON/JSONL, contracts,
+31.3 CPU seconds. Raw JSON/JSONL, contracts,
 source audits, independent checks, negative controls, environment hashes, and
 limitations live under `.openresearch/artifacts/claim_*/`.
 
@@ -123,6 +123,7 @@ limitations live under `.openresearch/artifacts/claim_*/`.
 - [Exact LP tie audit](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/exact-lp-tie-breaking-theorem-audit)
 - [Universal certificates and scale audits](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/universal-certificates-and-scale-audits)
 - [Release candidate](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/release-candidate-evidence-package)
+- [Final evidence snapshot](https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs/tree/orx/final-evidence-snapshot)
 
 ## Assessment
 

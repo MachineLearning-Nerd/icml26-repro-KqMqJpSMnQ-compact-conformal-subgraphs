@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "mutation": "reduce the low-tau LP mass from 2/5 to 1/10",
+  "checker_rejected": true
+}

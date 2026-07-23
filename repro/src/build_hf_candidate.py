@@ -178,6 +178,12 @@ def validate(judged_tree: Path, candidate_tree: Path, upload_paths: list[str]) -
     }
     missing = sorted(old_files - new_files)
     assert not missing
+    changed_old_files = sorted(
+        relative
+        for relative in old_files
+        if sha256(judged_tree / relative) != sha256(candidate_tree / relative)
+    )
+    assert changed_old_files == ["logbook.json"]
     logbook = json.loads((candidate_tree / "logbook.json").read_text())
     children = logbook["root"]["children"]
     assert len({child["slug"] for child in children}) == len(children)
@@ -202,6 +208,9 @@ def validate(judged_tree: Path, candidate_tree: Path, upload_paths: list[str]) -
         "candidate_file_count": len(new_files),
         "old_file_set_is_subset": True,
         "missing_old_files": [],
+        "unchanged_old_file_count": len(old_files) - len(changed_old_files),
+        "modified_old_files": changed_old_files,
+        "modification_reason": "logbook.json adds four campaign pages; all 28 other judged files are byte-identical",
         "logbook_valid": True,
     }
     write(RELEASE / "subset-check.json", json.dumps(subset, indent=2))

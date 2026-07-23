@@ -1,0 +1,82 @@
+{
+  "status": "FALSIFIED",
+  "counterexample": {
+    "instance": {
+      "vertices": [
+        0,
+        1
+      ],
+      "hyperedges": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "weights": [
+        1,
+        1
+      ],
+      "total_weight": 2
+    },
+    "low": {
+      "tau": "1/5",
+      "epsilon": "4/5",
+      "kappa": "1/5",
+      "rho": "1/6",
+      "x": [
+        "2/5",
+        "0"
+      ],
+      "z": [
+        "2/5",
+        "0"
+      ],
+      "objective": "2/5",
+      "objective_lower_bound": "2/5",
+      "rounded_set": [
+        0
+      ],
+      "feasible": true,
+      "optimal": true
+    },
+    "high": {
+      "tau": "1/2",
+      "epsilon": "1/2",
+      "kappa": "1/5",
+      "rho": "1/6",
+      "x": [
+        "0",
+        "1"
+      ],
+      "z": [
+        "0",
+        "1"
+      ],
+      "objective": "1",
+      "objective_lower_bound": "1",
+      "rounded_set": [
+        1
+      ],
+      "feasible": true,
+      "optimal": true
+    },
+    "tau_ordered": true,
+    "nested": false,
+    "parametric_maximal_chain": [
+      [],
+      [
+        0,
+        1
+      ]
+    ],
+    "lp_equals_parametric_at_low_tau": false
+  },
+  "independent_checker": "PASS",
+  "negative_control": "PASS",
+  "runtime": {
+    "wall_seconds": 0.009223041997756809,
+    "cpu_seconds": 0.006757999999999598
+  }
+}

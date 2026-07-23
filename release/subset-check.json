@@ -1,0 +1,13 @@
+{
+  "judged_revision": "6bbed76df9e229c6577602a49b10f5de74c26e8b",
+  "old_file_count": 29,
+  "candidate_file_count": 106,
+  "old_file_set_is_subset": true,
+  "missing_old_files": [],
+  "unchanged_old_file_count": 28,
+  "modified_old_files": [
+    "logbook.json"
+  ],
+  "modification_reason": "logbook.json adds four campaign pages; all 28 other judged files are byte-identical",
+  "logbook_valid": true
+}

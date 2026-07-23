@@ -1,0 +1,12 @@
+{
+  "claim_id": 4,
+  "verdict": "VERIFIED",
+  "assumptions": [
+    "calibration and test scores exchangeable conditional on the first split",
+    "Stage-1 failure probability at most delta",
+    "nested deterministic compression family",
+    "standard +infinity convention when requested rank is n+1"
+  ],
+  "conclusion": "marginal subgraph coverage at least phi-delta",
+  "verification_rule": "exact rank inequality and Stage-1 subtraction hold for every audited finite-sample parameter"
+}
