@@ -1,0 +1,16 @@
+{
+  "claim_id": 6,
+  "paper_statement": "On the 6x6 synthetic routing experiment with 50 train and 50 held-out routes, the LP solution uses 52 edges at phi=0.75 and is significantly more compressed than forward and reverse greedy for all plotted phi <= 0.8.",
+  "assumptions": [
+    "undirected 6x6 grid with 60 road edges",
+    "15% traffic uses a distinct 20-edge bypass",
+    "85% uses a shortest path under i.i.d. Uniform[0.1,2] road weights",
+    "50 training and 50 held-out routes from the same mixture",
+    "fixed deterministic tie order because the source omits one"
+  ],
+  "verification_rule": {
+    "52_edge_result": "at least one declared seed yields exactly 52 LP edges at phi=0.75",
+    "greedy_result": "paired 95% t intervals for forward-minus-LP and reverse-minus-LP edge counts are strictly above zero at phi in {0.2,0.4,0.6,0.8}",
+    "integrity": "independent route/set checker passes every seed and phi"
+  }
+}

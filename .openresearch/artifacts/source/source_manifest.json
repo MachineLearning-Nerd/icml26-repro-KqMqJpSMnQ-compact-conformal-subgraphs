@@ -1,0 +1,29 @@
+{
+  "paper": {
+    "arxiv_id": "2602.07530",
+    "title": "Compact Conformal Subgraphs",
+    "primary_html_url": "https://ar5iv.labs.arxiv.org/html/2602.07530",
+    "retrieved_at": "2026-07-23",
+    "retrieval_user_agent": "Mozilla/5.0 (compatible; OpenResearch-Reproduction/1.0; +https://github.com/MachineLearning-Nerd/icml26-repro-KqMqJpSMnQ-compact-conformal-subgraphs)",
+    "html_sha256": "c2f69b82d308ef5a75b5e4eba386a645ba45093a37a287d1cef31e775693d288",
+    "html_bytes": 463074,
+    "pinned_source_archive_sha256": "9d325e820577d33c01e3d1de923157b4274ff944e85f6280389810df313f7922"
+  },
+  "live_verdict": {
+    "dataset": "ICML-2026-agent-repro/verdicts",
+    "dataset_revision": "a88ad0d0f733fd9c11be972163076fb970d22c88",
+    "selection": "space_id == \"DineshAI/KqMqJpSMnQ\"",
+    "matching_records": 1,
+    "judged_space_revision": "6bbed76df9e229c6577602a49b10f5de74c26e8b",
+    "judged_at": "2026-07-22T02:56:08+00:00",
+    "score": "5/12"
+  },
+  "anchors": {
+    "claim_1": ["Section 4.1", "Theorem 1", "Appendix C"],
+    "claim_2": ["Section 4.2", "Theorem 2", "Appendix D"],
+    "claim_3": ["Section 4.2", "Monotonicity of Lagrangian lemma"],
+    "claim_4": ["Section 2.1", "Lemma 1", "Appendix A"],
+    "claim_5": ["Appendix B", "NP-Hardness theorem"],
+    "claim_6": ["Section 5.1", "Figure 1(b,c)"]
+  }
+}

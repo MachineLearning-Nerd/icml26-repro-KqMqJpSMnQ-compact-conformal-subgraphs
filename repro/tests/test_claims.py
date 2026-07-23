@@ -8,6 +8,7 @@ from repro.src.claim6_full import (
     reverse_greedy,
     sample_route,
 )
+from repro.src.claim2_exact import run_claim2_exact
 
 import numpy as np
 
@@ -44,3 +45,9 @@ def test_navigation_dgp_and_methods():
     ):
         chosen = method()
         assert sum(set(route) <= set(chosen) for route in held_out) / 20 >= 0.6
+
+
+def test_exact_lp_tie_counterexample(tmp_path):
+    result = run_claim2_exact(tmp_path)
+    assert result["status"] == "FALSIFIED"
+    assert not result["counterexample"]["nested"]

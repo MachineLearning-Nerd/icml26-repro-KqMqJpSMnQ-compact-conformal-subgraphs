@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "records_checked": 200,
+  "phi_values_checked": [
+    0.2,
+    0.4,
+    0.6,
+    0.75,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "checks_per_method": [
+    "edge ids valid and unique",
+    "route SHA-256 digests reproduce",
+    "chosen cardinality reproduces",
+    "selection and evaluation coverage reproduce",
+    "selection coverage reaches target phi"
+  ]
+}

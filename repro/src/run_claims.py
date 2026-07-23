@@ -14,8 +14,10 @@ from scipy.optimize import linprog
 
 try:
     from repro.src.claim6_full import run_claim6
+    from repro.src.claim2_exact import run_claim2_exact
 except ModuleNotFoundError:  # Direct execution adds repro/src, not repo root.
     from claim6_full import run_claim6
+    from claim2_exact import run_claim2_exact
 
 
 def mass(edges, weights, chosen):
@@ -316,6 +318,7 @@ def main():
     config = json.loads(Path("repro/config/campaign.json").read_text())
     result = {"source": "arXiv:2602.07530", "C1": claim_one()}
     result.update(claim_two_three())
+    result["C2_exact"] = run_claim2_exact(Path(".openresearch/artifacts"))
     result["C4"] = claim_four(); result["C5"] = claim_five(); result["C6"] = claim_six()
     result["C6_full"] = run_claim6(
         config["claim_6"], Path(".openresearch/artifacts")

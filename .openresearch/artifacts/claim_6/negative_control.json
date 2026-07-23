@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "mutation": "replace one valid edge id with 81",
+  "checker_rejected": true,
+  "exception": "AssertionError"
+}
