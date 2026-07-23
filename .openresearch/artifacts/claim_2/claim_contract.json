@@ -1,0 +1,7 @@
+{
+  "claim_id": 2,
+  "verdict": "FALSIFIED",
+  "literal_quantifier": "Fix kappa. For any target tau, the discrete subgraph obtained by solving the LP and threshold rounding equals the parametric min-cut output and the outputs are monotone in tau.",
+  "falsification_rule": "Two ordered tau values satisfying the algorithm's kappa domain have exact optimal LP solutions whose thresholded vertex sets are not nested.",
+  "scope": "This falsifies the algorithm as written without a canonical optimal-solution tie rule; it does not contradict nestedness of the maximal-source-side parametric min-cut chain."
+}

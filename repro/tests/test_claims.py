@@ -9,6 +9,7 @@ from repro.src.claim6_full import (
     sample_route,
 )
 from repro.src.claim2_exact import run_claim2_exact
+from repro.src.claims_theory_full import theory_self_check
 
 import numpy as np
 
@@ -51,3 +52,7 @@ def test_exact_lp_tie_counterexample(tmp_path):
     result = run_claim2_exact(tmp_path)
     assert result["status"] == "FALSIFIED"
     assert not result["counterexample"]["nested"]
+
+
+def test_theory_certificate_identities():
+    theory_self_check()

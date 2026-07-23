@@ -15,9 +15,11 @@ from scipy.optimize import linprog
 try:
     from repro.src.claim6_full import run_claim6
     from repro.src.claim2_exact import run_claim2_exact
+    from repro.src.claims_theory_full import run_theory_claims
 except ModuleNotFoundError:  # Direct execution adds repro/src, not repo root.
     from claim6_full import run_claim6
     from claim2_exact import run_claim2_exact
+    from claims_theory_full import run_theory_claims
 
 
 def mass(edges, weights, chosen):
@@ -320,6 +322,7 @@ def main():
     result.update(claim_two_three())
     result["C2_exact"] = run_claim2_exact(Path(".openresearch/artifacts"))
     result["C4"] = claim_four(); result["C5"] = claim_five(); result["C6"] = claim_six()
+    result.update(run_theory_claims(Path(".openresearch/artifacts")))
     result["C6_full"] = run_claim6(
         config["claim_6"], Path(".openresearch/artifacts")
     )

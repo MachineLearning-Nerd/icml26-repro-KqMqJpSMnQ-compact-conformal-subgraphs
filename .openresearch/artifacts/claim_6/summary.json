@@ -597,8 +597,8 @@
     "reverse": 0.7639753486424354
   },
   "runtime": {
-    "wall_seconds": 50.2950979580055,
-    "cpu_seconds": 32.467458,
+    "wall_seconds": 64.12130508298287,
+    "cpu_seconds": 39.104814,
     "logical_cpus": 8,
     "platform": "macOS-26.5.2-arm64-arm-64bit",
     "python": "3.12.11"

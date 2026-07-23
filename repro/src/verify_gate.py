@@ -15,6 +15,8 @@ def main():
     assert claims["C4"]["status"] == "verified"
     assert claims["C5"]["status"] == "verified"
     assert claims["C6"]["status"] == "executed_source_scale"
+    for claim_id in ("C1_full", "C3_full", "C4_full", "C5_full"):
+        assert claims[claim_id]["status"] == "VERIFIED"
     assert claims["C6_full"]["status"] in {"VERIFIED", "BLOCKED"}
     claim_six_artifacts = Path(".openresearch/artifacts/claim_6")
     assert json.loads(
@@ -30,6 +32,14 @@ def main():
     assert json.loads(
         (claim_two_artifacts / "negative_control.json").read_text()
     )["checker_rejected"]
+    for claim_number in (1, 3, 4, 5):
+        claim_artifacts = Path(f".openresearch/artifacts/claim_{claim_number}")
+        assert json.loads(
+            (claim_artifacts / "independent_checker.json").read_text()
+        )["status"] == "PASS"
+        assert json.loads(
+            (claim_artifacts / "negative_control.json").read_text()
+        )["checker_rejected"]
     gate = {
         "paper": "KqMqJpSMnQ",
         "tests_passed": True,
@@ -41,7 +51,11 @@ def main():
         },
         "claim_6_full_status": claims["C6_full"]["status"],
         "claim_2_exact_status": claims["C2_exact"]["status"],
-        "scope": "C2 has an exact literal-algorithm counterexample while the canonical parametric family remains nested. C3 remains a finite exact sequence audit. C6 includes a full-scale, 200-seed source-faithful route and greedy comparison.",
+        "full_claim_statuses": {
+            claim_id: claims[claim_id]["status"]
+            for claim_id in ("C1_full", "C3_full", "C4_full", "C5_full")
+        },
+        "scope": "C1, C3, C4, and C5 now have theorem-level certificates plus non-toy constructive checks. C2 has an exact literal-algorithm counterexample while the canonical parametric family remains nested. C6 includes a full-scale 200-seed route and greedy comparison.",
     }
     Path("outputs/publication_gate.json").write_text(json.dumps(gate, indent=2) + "\n")
     print(json.dumps(gate, indent=2))
