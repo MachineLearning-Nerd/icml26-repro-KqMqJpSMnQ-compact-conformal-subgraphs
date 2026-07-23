@@ -1,6 +1,6 @@
 {
   "claim_6": {
-    "selection_mode": "paper_literal",
+    "selection_mode": "three_way",
     "seeds": 200,
     "phi_values": [0.2, 0.4, 0.6, 0.75, 0.8, 0.9, 1.0]
   }
